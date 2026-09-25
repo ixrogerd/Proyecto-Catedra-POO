@@ -16,5 +16,10 @@ namespace Proyecto_Catedra_UDB
         {
             InitializeComponent();
         }
+
+        private void dgvCitas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

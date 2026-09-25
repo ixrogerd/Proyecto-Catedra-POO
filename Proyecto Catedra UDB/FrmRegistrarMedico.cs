@@ -16,5 +16,10 @@ namespace Proyecto_Catedra_UDB
         {
             InitializeComponent();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
