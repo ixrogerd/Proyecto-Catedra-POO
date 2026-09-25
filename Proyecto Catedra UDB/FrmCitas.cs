@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Catedra_UDB
 {
-    public partial class SistemaCitas : Form
+    public partial class FrmCitas : Form
     {
-        public SistemaCitas()
+        public FrmCitas()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

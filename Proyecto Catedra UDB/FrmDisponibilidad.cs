@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Catedra_UDB
 {
-    public partial class SistemaCitas : Form
+    public partial class FrmDisponibilidad : Form
     {
-        public SistemaCitas()
+        public FrmDisponibilidad()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
