@@ -16,5 +16,10 @@ namespace Proyecto_Catedra_UDB
         {
             InitializeComponent();
         }
+
+        private void grpDatos_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
