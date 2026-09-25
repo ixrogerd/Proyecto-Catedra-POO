@@ -46,52 +46,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormsAdmin\FrmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormsAdmin\FrmInicioAdmin.Designer.cs">
+      <DependentUpon>FrmInicioAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tableros\FrmAdministrador.cs">
+    <Compile Include="FormsMedico\FrmInicioMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tableros\FrmAdministrador.Designer.cs">
+    <Compile Include="FormsMedico\FrmInicioMedico.Designer.cs">
+      <DependentUpon>FrmInicioMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPaciente\FrmCitasPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPaciente\FrmCitasPaciente.Designer.cs">
+      <DependentUpon>FrmCitasPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPaciente\FrmInicioPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPaciente\FrmInicioPaciente.Designer.cs">
+      <DependentUpon>FrmInicioPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plantilla\FrmPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plantilla\FrmPaciente.Designer.cs">
+      <DependentUpon>FrmPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plantilla\FrmAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plantilla\FrmAdministrador.Designer.cs">
       <DependentUpon>FrmAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAgendarCita.cs">
+    <Compile Include="FormsPaciente\FrmAgendarCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAgendarCita.Designer.cs">
+    <Compile Include="FormsPaciente\FrmAgendarCita.Designer.cs">
       <DependentUpon>FrmAgendarCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAtenderCita.cs">
+    <Compile Include="FormsMedico\FrmAtenderCita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAtenderCita.Designer.cs">
+    <Compile Include="FormsMedico\FrmAtenderCita.Designer.cs">
       <DependentUpon>FrmAtenderCita.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCitas.cs">
+    <Compile Include="FormsMedico\FrmCitasMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCitas.Designer.cs">
-      <DependentUpon>FrmCitas.cs</DependentUpon>
+    <Compile Include="FormsMedico\FrmCitasMedico.Designer.cs">
+      <DependentUpon>FrmCitasMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDisponibilidad.cs">
+    <Compile Include="FormsPaciente\FrmDisponibilidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDisponibilidad.Designer.cs">
+    <Compile Include="FormsPaciente\FrmDisponibilidad.Designer.cs">
       <DependentUpon>FrmDisponibilidad.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEspecialidades.cs">
+    <Compile Include="FormsAdmin\FrmEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEspecialidades.Designer.cs">
+    <Compile Include="FormsAdmin\FrmEspecialidades.Designer.cs">
       <DependentUpon>FrmEspecialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmHorarios.cs">
+    <Compile Include="FormsMedico\FrmHorarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmHorarios.Designer.cs">
+    <Compile Include="FormsMedico\FrmHorarios.Designer.cs">
       <DependentUpon>FrmHorarios.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
@@ -100,78 +124,84 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tableros\FrmMedico.cs">
+    <Compile Include="Plantilla\FrmMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tableros\FrmMedico.Designer.cs">
+    <Compile Include="Plantilla\FrmMedico.Designer.cs">
       <DependentUpon>FrmMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tableros\FrmPaciente.cs">
+    <Compile Include="FormsMedico\FrmReceta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tableros\FrmPaciente.Designer.cs">
-      <DependentUpon>FrmPaciente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmReceta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmReceta.Designer.cs">
+    <Compile Include="FormsMedico\FrmReceta.Designer.cs">
       <DependentUpon>FrmReceta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRegistrarMedico.cs">
+    <Compile Include="FormsAdmin\FrmRegistrarMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRegistrarMedico.Designer.cs">
+    <Compile Include="FormsAdmin\FrmRegistrarMedico.Designer.cs">
       <DependentUpon>FrmRegistrarMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRegistrarPaciente.cs">
+    <Compile Include="FormsAdmin\FrmRegistrarPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRegistrarPaciente.Designer.cs">
+    <Compile Include="FormsAdmin\FrmRegistrarPaciente.Designer.cs">
       <DependentUpon>FrmRegistrarPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tableros\FrmTableroBase.cs">
+    <Compile Include="Plantilla\FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tableros\FrmTableroBase.Designer.cs">
-      <DependentUpon>FrmTableroBase.cs</DependentUpon>
+    <Compile Include="Plantilla\FrmBase.Designer.cs">
+      <DependentUpon>FrmBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUsuarios.cs">
+    <Compile Include="FormsAdmin\FrmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUsuarios.Designer.cs">
+    <Compile Include="FormsAdmin\FrmUsuarios.Designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormsAdmin\FrmInicioAdmin.resx">
+      <DependentUpon>FrmInicioAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tableros\FrmAdministrador.resx">
+    <EmbeddedResource Include="FormsMedico\FrmInicioMedico.resx">
+      <DependentUpon>FrmInicioMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPaciente\FrmCitasPaciente.resx">
+      <DependentUpon>FrmCitasPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPaciente\FrmInicioPaciente.resx">
+      <DependentUpon>FrmInicioPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plantilla\FrmMedico.resx">
+      <DependentUpon>FrmMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plantilla\FrmPaciente.resx">
+      <DependentUpon>FrmPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plantilla\FrmAdministrador.resx">
       <DependentUpon>FrmAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAgendarCita.resx">
+    <EmbeddedResource Include="FormsPaciente\FrmAgendarCita.resx">
       <DependentUpon>FrmAgendarCita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCitas.resx">
-      <DependentUpon>FrmCitas.cs</DependentUpon>
+    <EmbeddedResource Include="FormsMedico\FrmCitasMedico.resx">
+      <DependentUpon>FrmCitasMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDisponibilidad.resx">
+    <EmbeddedResource Include="FormsPaciente\FrmDisponibilidad.resx">
       <DependentUpon>FrmDisponibilidad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEspecialidades.resx">
+    <EmbeddedResource Include="FormsAdmin\FrmEspecialidades.resx">
       <DependentUpon>FrmEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPaciente.resx">
-      <DependentUpon>FrmPaciente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistrarMedico.resx">
+    <EmbeddedResource Include="FormsAdmin\FrmRegistrarMedico.resx">
       <DependentUpon>FrmRegistrarMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRegistrarPaciente.resx">
+    <EmbeddedResource Include="FormsAdmin\FrmRegistrarPaciente.resx">
       <DependentUpon>FrmRegistrarPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -183,8 +213,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Tableros\FrmTableroBase.resx">
-      <DependentUpon>FrmTableroBase.cs</DependentUpon>
+    <EmbeddedResource Include="Plantilla\FrmBase.resx">
+      <DependentUpon>FrmBase.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -199,5 +229,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
