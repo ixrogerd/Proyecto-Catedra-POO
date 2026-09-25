@@ -52,10 +52,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAdministrador.cs">
+    <Compile Include="Tableros\FrmAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAdministrador.Designer.cs">
+    <Compile Include="Tableros\FrmAdministrador.Designer.cs">
       <DependentUpon>FrmAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAgendarCita.cs">
@@ -100,16 +100,16 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMedico.cs">
+    <Compile Include="Tableros\FrmMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMedico.Designer.cs">
+    <Compile Include="Tableros\FrmMedico.Designer.cs">
       <DependentUpon>FrmMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPaciente.cs">
+    <Compile Include="Tableros\FrmPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPaciente.Designer.cs">
+    <Compile Include="Tableros\FrmPaciente.Designer.cs">
       <DependentUpon>FrmPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmReceta.cs">
@@ -130,6 +130,12 @@
     <Compile Include="FrmRegistrarPaciente.Designer.cs">
       <DependentUpon>FrmRegistrarPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tableros\FrmTableroBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tableros\FrmTableroBase.Designer.cs">
+      <DependentUpon>FrmTableroBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,7 +147,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdministrador.resx">
+    <EmbeddedResource Include="Tableros\FrmAdministrador.resx">
       <DependentUpon>FrmAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
@@ -159,6 +165,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tableros\FrmTableroBase.resx">
+      <DependentUpon>FrmTableroBase.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

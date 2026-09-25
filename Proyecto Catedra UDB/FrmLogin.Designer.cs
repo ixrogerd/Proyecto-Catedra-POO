@@ -51,13 +51,13 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(12, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(309, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(310, 30);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "SISTEMA DE CITAS MEDICAS";
+            this.lblTitulo.Text = "SISTEMA DE CITAS MÉDICAS";
             // 
             // label1
             // 

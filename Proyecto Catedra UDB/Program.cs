@@ -16,7 +16,7 @@ namespace Proyecto_Catedra_UDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SistemaCitas());
+            Application.Run(new FrmTableroBase());
         }
     }
 }
