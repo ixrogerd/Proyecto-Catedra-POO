@@ -21,36 +21,36 @@ namespace Proyecto_Catedra_UDB
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmInicioMedico frmInicioMedico = new FrmInicioMedico();
             frmInicioMedico.Show();
+            this.Hide();
         }
         private void btnCitas_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmCitasMedico frmCitasMedico = new FrmCitasMedico();
             frmCitasMedico.Show();
+            this.Hide();
         }
 
         private void btnAtender_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmAtenderCita frmAtenderCita = new FrmAtenderCita();
             frmAtenderCita.Show();
+            this.Hide();
         }
 
         private void btnReceta_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmReceta frmReceta = new FrmReceta();
             frmReceta.Show();
+            this.Hide();
         }
 
         private void btnHorarios_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmHorarios frmHorarios = new FrmHorarios();
             frmHorarios.Show();
+            this.Hide();
         }
     }
 }

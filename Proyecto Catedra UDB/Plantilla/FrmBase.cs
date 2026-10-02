@@ -19,9 +19,9 @@ namespace Proyecto_Catedra_UDB
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmLogin frmLogin = new FrmLogin();
             frmLogin.Show();
+            this.Hide();
         }
     }
 }

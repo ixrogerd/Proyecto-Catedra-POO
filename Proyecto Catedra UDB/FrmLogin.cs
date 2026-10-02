@@ -1,4 +1,6 @@
 ﻿using Proyecto_Catedra_UDB.FormsAdmin;
+using Proyecto_Catedra_UDB.FormsMedico;
+using Proyecto_Catedra_UDB.FormsPaciente;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +22,13 @@ namespace Proyecto_Catedra_UDB
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmInicioAdmin frmInicioAdmin = new FrmInicioAdmin();
-            frmInicioAdmin.Show();
+            //frmInicioAdmin.Show();
+            FrmInicioMedico frmInicioMedico = new FrmInicioMedico();
+            frmInicioMedico.Show();
+            FrmInicioPaciente frmInicioPaciente = new FrmInicioPaciente();
+            //frmInicioPaciente.Show();
+            this.Hide();
         }
     }
 }

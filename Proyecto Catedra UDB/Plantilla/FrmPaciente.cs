@@ -20,30 +20,30 @@ namespace Proyecto_Catedra_UDB
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmInicioPaciente frmInicioPaciente = new FrmInicioPaciente();
             frmInicioPaciente.Show();
+            this.Hide();
         }
 
         private void btnDisponibilidad_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmDisponibilidad frmDisponibilidad = new FrmDisponibilidad();
             frmDisponibilidad.Show();
+            this.Hide();
         }
 
         private void btnAgendarCita_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmAgendarCita frmAgendarCita = new FrmAgendarCita();
             frmAgendarCita.Show();
+            this.Hide();
         }
 
         private void btnCitas_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmCitasPaciente frmCitasPaciente = new FrmCitasPaciente();
             frmCitasPaciente.Show();
+            this.Hide();
         }
     }
 }

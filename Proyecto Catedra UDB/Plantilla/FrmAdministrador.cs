@@ -20,38 +20,39 @@ namespace Proyecto_Catedra_UDB
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmInicioAdmin frmInicioAdmin = new FrmInicioAdmin();
             frmInicioAdmin.Show();
+            this.Hide();
         }
 
         private void btnPacientes_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmRegistrarPaciente frmRegistrarPaciente = new FrmRegistrarPaciente();
             frmRegistrarPaciente.Show();
+
+            this.Hide();
 
         }
 
         private void btnMedicos_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmRegistrarMedico frmRegistrarMedico = new FrmRegistrarMedico();
             frmRegistrarMedico.Show();
+            this.Hide();
         }
 
         private void btnEspecialidades_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmEspecialidades frmEspecialidades = new FrmEspecialidades();
             frmEspecialidades.Show();
+            this.Hide();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            this.Hide();
             FrmUsuarios frmUsuarios = new FrmUsuarios();
             frmUsuarios.Show();
+            this.Hide();
         }
 
 
