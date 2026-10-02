@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -164,6 +166,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormsAdmin\FrmInicioAdmin.resx">
       <DependentUpon>FrmInicioAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsAdmin\FrmUsuarios.resx">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsMedico\FrmAtenderCita.resx">
+      <DependentUpon>FrmAtenderCita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsMedico\FrmHorarios.resx">
+      <DependentUpon>FrmHorarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsMedico\FrmInicioMedico.resx">
       <DependentUpon>FrmInicioMedico.cs</DependentUpon>
