@@ -40,7 +40,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAgendarCita
             // 
             this.btnAgendarCita.FlatAppearance.BorderSize = 0;
             // 
@@ -60,6 +60,11 @@
             // 
             this.btnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Size = new System.Drawing.Size(544, 50);
+            this.lblTitulo.Text = "CONSULTAR DISPONIBILIDAD";
             // 
             // cbEspecialidad
             // 

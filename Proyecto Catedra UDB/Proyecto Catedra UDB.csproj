@@ -179,6 +179,9 @@
     <EmbeddedResource Include="FormsMedico\FrmInicioMedico.resx">
       <DependentUpon>FrmInicioMedico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsMedico\FrmReceta.resx">
+      <DependentUpon>FrmReceta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsPaciente\FrmCitasPaciente.resx">
       <DependentUpon>FrmCitasPaciente.cs</DependentUpon>
     </EmbeddedResource>

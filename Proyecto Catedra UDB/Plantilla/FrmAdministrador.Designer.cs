@@ -32,7 +32,6 @@
             this.btnMedicos = new System.Windows.Forms.Button();
             this.btnEspecialidades = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btnReportes = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +53,6 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Controls.Add(this.btnReportes);
             this.pnlMenu.Controls.Add(this.btnUsuarios);
             this.pnlMenu.Controls.Add(this.btnEspecialidades);
             this.pnlMenu.Controls.Add(this.btnMedicos);
@@ -66,7 +64,6 @@
             this.pnlMenu.Controls.SetChildIndex(this.btnMedicos, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnEspecialidades, 0);
             this.pnlMenu.Controls.SetChildIndex(this.btnUsuarios, 0);
-            this.pnlMenu.Controls.SetChildIndex(this.btnReportes, 0);
             // 
             // btnPacientes
             // 
@@ -120,18 +117,6 @@
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
-            // btnReportes
-            // 
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnReportes.Location = new System.Drawing.Point(0, 330);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(230, 50);
-            this.btnReportes.TabIndex = 12;
-            this.btnReportes.Text = "REPORTES";
-            this.btnReportes.UseVisualStyleBackColor = true;
-            // 
             // FrmAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +138,6 @@
         protected System.Windows.Forms.Button btnUsuarios;
         protected System.Windows.Forms.Button btnEspecialidades;
         protected System.Windows.Forms.Button btnMedicos;
-        protected System.Windows.Forms.Button btnReportes;
+
     }
 }

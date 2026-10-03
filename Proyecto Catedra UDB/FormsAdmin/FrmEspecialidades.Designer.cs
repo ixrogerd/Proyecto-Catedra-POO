@@ -59,10 +59,6 @@
             // 
             this.btnMedicos.FlatAppearance.BorderSize = 0;
             // 
-            // btnReportes
-            // 
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            // 
             // btnInicio
             // 
             this.btnInicio.FlatAppearance.BorderSize = 0;
@@ -71,6 +67,11 @@
             // 
             this.btnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Size = new System.Drawing.Size(543, 50);
+            this.lblTitulo.Text = "GESTIÓN DE ESPECIALIDADES";
             // 
             // groupBox1
             // 

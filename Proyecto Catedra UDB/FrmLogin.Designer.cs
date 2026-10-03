@@ -166,6 +166,7 @@
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Citas Medicas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             this.pnlSuperior.ResumeLayout(false);
             this.pnlSuperior.PerformLayout();
             this.ResumeLayout(false);

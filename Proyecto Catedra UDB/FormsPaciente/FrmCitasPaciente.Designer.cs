@@ -42,7 +42,7 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAgendarCita
             // 
             this.btnAgendarCita.FlatAppearance.BorderSize = 0;
             // 
@@ -62,6 +62,11 @@
             // 
             this.btnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Size = new System.Drawing.Size(348, 50);
+            this.lblTitulo.Text = "GESTIÓN DE CITAS";
             // 
             // btnCancelarCita
             // 
@@ -148,7 +153,7 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Estado:";
             // 
-            // CitasPaciente
+            // FrmCitasPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -157,7 +162,7 @@
             this.Controls.Add(this.btnVerCita);
             this.Controls.Add(this.dgvCitas);
             this.Controls.Add(this.groupBox1);
-            this.Name = "CitasPaciente";
+            this.Name = "FrmCitasPaciente";
             this.Text = "Form1";
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);

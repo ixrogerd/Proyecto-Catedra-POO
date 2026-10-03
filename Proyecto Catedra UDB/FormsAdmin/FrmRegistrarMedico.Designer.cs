@@ -70,10 +70,6 @@
             // 
             this.btnMedicos.FlatAppearance.BorderSize = 0;
             // 
-            // btnReportes
-            // 
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            // 
             // btnInicio
             // 
             this.btnInicio.FlatAppearance.BorderSize = 0;

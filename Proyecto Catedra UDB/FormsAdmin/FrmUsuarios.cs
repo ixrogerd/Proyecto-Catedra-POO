@@ -9,11 +9,12 @@ namespace Proyecto_Catedra_UDB
         public FrmUsuarios()
         {
             InitializeComponent();
-
+            btnInicio.BackColor = Color.LightBlue;
+            btnInicio.ForeColor = Color.Black;
+            btnUsuarios.BackColor = Color.SteelBlue;
+            btnUsuarios.ForeColor = Color.White;
             cmbTipoUsuario.SelectedIndex = 0;
 
-            ConfigurarTabla();
-            CargarEjemplos();
         }
 
         private void ConfigurarTabla()
@@ -25,32 +26,6 @@ namespace Proyecto_Catedra_UDB
             dgvUsuarios.Columns.Add("Correo", "Correo");
             dgvUsuarios.Columns.Add("Tipo", "Tipo de usuario");
             dgvUsuarios.Columns.Add("Estado", "Estado");
-        }
-
-        private void CargarEjemplos()
-        {
-            dgvUsuarios.Rows.Clear();
-
-            dgvUsuarios.Rows.Add(
-                "1",
-                "Administrador",
-                "admin@sistema.com",
-                "Administrador",
-                "Activo");
-
-            dgvUsuarios.Rows.Add(
-                "2",
-                "Juan Pérez",
-                "juan@correo.com",
-                "Médico",
-                "Activo");
-
-            dgvUsuarios.Rows.Add(
-                "3",
-                "María López",
-                "maria@correo.com",
-                "Paciente",
-                "Activo");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

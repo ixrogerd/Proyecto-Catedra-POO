@@ -37,9 +37,40 @@
             this.dgvCitas = new System.Windows.Forms.DataGridView();
             this.btnVerCita = new System.Windows.Forms.Button();
             this.btnCancelarCita = new System.Windows.Forms.Button();
+            this.pnlMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnCitas
+            // 
+            this.btnCitas.FlatAppearance.BorderSize = 0;
+            // 
+            // btnAtender
+            // 
+            this.btnAtender.FlatAppearance.BorderSize = 0;
+            // 
+            // btnReceta
+            // 
+            this.btnReceta.FlatAppearance.BorderSize = 0;
+            // 
+            // btnHorarios
+            // 
+            this.btnHorarios.FlatAppearance.BorderSize = 0;
+            // 
+            // btnInicio
+            // 
+            this.btnInicio.FlatAppearance.BorderSize = 0;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Size = new System.Drawing.Size(348, 50);
+            this.lblTitulo.Text = "GESTIÓN DE CITAS";
             // 
             // groupBox1
             // 
@@ -127,23 +158,33 @@
             this.btnCancelarCita.Text = "CANCELAR CITA";
             this.btnCancelarCita.UseVisualStyleBackColor = true;
             // 
-            // FrmCitas
+            // FrmCitasMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 561);
+            this.ClientSize = new System.Drawing.Size(1084, 661);
             this.Controls.Add(this.btnCancelarCita);
             this.Controls.Add(this.btnVerCita);
             this.Controls.Add(this.dgvCitas);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.Name = "FrmCitas";
+            this.Name = "FrmCitasMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Citas Medicas";
+            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.dgvCitas, 0);
+            this.Controls.SetChildIndex(this.btnVerCita, 0);
+            this.Controls.SetChildIndex(this.btnCancelarCita, 0);
+            this.Controls.SetChildIndex(this.pnlMenu, 0);
+            this.Controls.SetChildIndex(this.pnlSuperior, 0);
+            this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

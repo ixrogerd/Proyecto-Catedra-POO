@@ -23,12 +23,30 @@ namespace Proyecto_Catedra_UDB
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             FrmInicioAdmin frmInicioAdmin = new FrmInicioAdmin();
-            //frmInicioAdmin.Show();
+            frmInicioAdmin.Show();
             FrmInicioMedico frmInicioMedico = new FrmInicioMedico();
-            frmInicioMedico.Show();
+            //frmInicioMedico.Show();
             FrmInicioPaciente frmInicioPaciente = new FrmInicioPaciente();
             //frmInicioPaciente.Show();
+
+            if (txtUsuario.Text == "admin")
+            {
+                frmInicioAdmin.Show();
+            }
+            else if (txtUsuario.Text == "medico")
+            {
+                frmInicioMedico.Show();
+            }
+            else if (txtUsuario.Text == "paciente")
+            {
+                frmInicioPaciente.Show();
+            }
             this.Hide();
+        }
+
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

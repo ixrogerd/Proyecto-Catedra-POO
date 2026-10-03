@@ -72,11 +72,6 @@
             this.btnMedicos.FlatAppearance.BorderSize = 0;
             this.btnMedicos.ForeColor = System.Drawing.Color.Black;
             // 
-            // btnReportes
-            // 
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.ForeColor = System.Drawing.Color.Black;
-            // 
             // btnInicio
             // 
             this.btnInicio.FlatAppearance.BorderSize = 0;

@@ -16,7 +16,7 @@ namespace Proyecto_Catedra_UDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmUsuarios());
+            Application.Run(new FrmLogin());
         }
     }
 }
