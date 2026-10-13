@@ -36,6 +36,7 @@
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Seguridad.cs" />
+    <Compile Include="Business\UsuarioBLL.cs" />
+    <Compile Include="Connection\DbConnection.cs" />
+    <Compile Include="Data\UsuarioDAO.cs" />
     <Compile Include="FormsAdmin\FrmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +77,9 @@
     <Compile Include="FormsPaciente\FrmInicioPaciente.Designer.cs">
       <DependentUpon>FrmInicioPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Sesion.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Plantilla\FrmPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
