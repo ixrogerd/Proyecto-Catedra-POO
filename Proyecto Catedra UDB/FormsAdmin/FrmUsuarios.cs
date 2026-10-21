@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Capa_Entidad;
+using Capa_Negocio;
+using Proyecto_Catedra_UDB.Plantilla;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace Proyecto_Catedra_UDB
 {
     public partial class FrmUsuarios : FrmAdministrador
     {
+        private readonly N_Usuario negocio = new N_Usuario();
+        private int idSeleccionado = 0;
+
         public FrmUsuarios()
         {
             InitializeComponent();
@@ -13,98 +18,145 @@ namespace Proyecto_Catedra_UDB
             btnInicio.ForeColor = Color.Black;
             btnUsuarios.BackColor = Color.SteelBlue;
             btnUsuarios.ForeColor = Color.White;
+
             cmbTipoUsuario.SelectedIndex = 0;
+            txtUsername.MaxLength = 50;
+            txtNuevaClave.MaxLength = 50;
+            txtNuevaClave.UseSystemPasswordChar = true;
+            Ui.ConfigurarGrid(dgvUsuarios);
+            dgvUsuarios.CellFormatting += dgvUsuarios_CellFormatting;
 
+
+            Cargar();
         }
-
-        private void ConfigurarTabla()
+        // Orden del combo: Todos, Administrador, Médico, Paciente
+        private int IdRolSeleccionado()
         {
-            dgvUsuarios.Columns.Clear();
-
-            dgvUsuarios.Columns.Add("Id", "ID");
-            dgvUsuarios.Columns.Add("Nombre", "Nombre");
-            dgvUsuarios.Columns.Add("Correo", "Correo");
-            dgvUsuarios.Columns.Add("Tipo", "Tipo de usuario");
-            dgvUsuarios.Columns.Add("Estado", "Estado");
+            switch (cmbTipoUsuario.Text)
+            {
+                case "Administrador": return Sesion.Administrador;
+                case "Médico": return Sesion.Medico;
+                case "Paciente": return Sesion.Paciente;
+                default: return 0;
+            }
         }
 
+        private void Cargar()
+        {
+            try
+            {
+                dgvUsuarios.DataSource = negocio.Listar(txtBuscar.Text.Trim(), IdRolSeleccionado());
+                dgvUsuarios.Columns["ID_Usuario"].Visible = false;
+                dgvUsuarios.Columns["ID_Rol"].Visible = false;
+                dgvUsuarios.Columns["Username"].HeaderText = "Usuario";
+                dgvUsuarios.Columns["Rol"].HeaderText = "Tipo de usuario";
+
+                foreach (DataGridViewRow f in dgvUsuarios.Rows)
+                    if (f.Cells["Estado"].Value.ToString() == "Inactivo")
+                        f.DefaultCellStyle.ForeColor = Color.Gray;
+
+                dgvUsuarios.ClearSelection();
+            }
+            catch (Exception ex) { Ui.Error(ex.Message); }
+        }
+
+        private void LimpiarSeleccion()
+        {
+            idSeleccionado = 0;
+            txtUsername.Clear();
+            txtNuevaClave.Clear();
+            dgvUsuarios.ClearSelection();
+        }
+
+     
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string nombre = txtBuscar.Text.Trim().ToLower();
-            string tipo = cmbTipoUsuario.Text;
-
-            foreach (DataGridViewRow fila in dgvUsuarios.Rows)
-            {
-                string nombreFila =
-                    fila.Cells["Nombre"].Value?.ToString().ToLower() ?? "";
-
-                string tipoFila =
-                    fila.Cells["Tipo"].Value?.ToString() ?? "";
-
-                bool coincideNombre =
-                    nombre == "" || nombreFila.Contains(nombre);
-
-                bool coincideTipo =
-                    tipo == "Todos" || tipoFila == tipo;
-
-                fila.Visible =
-                    coincideNombre && coincideTipo;
-            }
+            LimpiarSeleccion();
+            Cargar();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.CurrentRow == null)
+            if (idSeleccionado == 0)
             {
-                MessageBox.Show(
-                    "Seleccione un usuario.",
-                    "Usuarios",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                Ui.Aviso("Seleccione un usuario de la tabla.");
                 return;
             }
-
-            MessageBox.Show(
-                "Usuario seleccionado para actualizar.",
-                "Usuarios",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                negocio.ActualizarCuenta(idSeleccionado, txtUsername.Text, txtNuevaClave.Text);
+                Ui.Info("Cuenta actualizada correctamente.");
+                LimpiarSeleccion();
+                Cargar();
+            }
+            catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.CurrentRow == null)
+            if (idSeleccionado == 0)
             {
-                MessageBox.Show(
-                    "Seleccione un usuario.",
-                    "Usuarios",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                Ui.Aviso("Seleccione un usuario de la tabla.");
                 return;
             }
+            DialogResult r = MessageBox.Show(
+                "¿Inhabilitar esta cuenta? No podrá iniciar sesión y sus citas pendientes se cancelarán.",
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (r != DialogResult.Yes) return;
 
-            DialogResult resultado = MessageBox.Show(
-                "¿Desea eliminar el usuario seleccionado?",
-                "Confirmar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (resultado == DialogResult.Yes)
+            try
             {
-                dgvUsuarios.Rows.Remove(
-                    dgvUsuarios.CurrentRow);
+                negocio.Desactivar(idSeleccionado);
+                LimpiarSeleccion();
+                Cargar();
             }
+            catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtBuscar.Clear();
             cmbTipoUsuario.SelectedIndex = 0;
+            LimpiarSeleccion();
+            Cargar();
+        }
 
-            foreach (DataGridViewRow fila in dgvUsuarios.Rows)
-                fila.Visible = true;
+        private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void dgvUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            object estado = dgvUsuarios.Rows[e.RowIndex].Cells["Estado"].Value;
+            if (estado != null && estado.ToString() == "Inactivo")
+                e.CellStyle.ForeColor = Color.Gray;
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            DataGridViewRow f = dgvUsuarios.Rows[e.RowIndex];
+            idSeleccionado = Convert.ToInt32(f.Cells["ID_Usuario"].Value);
+            txtUsername.Text = f.Cells["Username"].Value.ToString();
+            txtNuevaClave.Clear();
+        }
+
+        private void btnReactivar_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == 0)
+            {
+                Ui.Aviso("Seleccione un usuario de la tabla.");
+                return;
+            }
+            try
+            {
+                negocio.Reactivar(idSeleccionado);
+                LimpiarSeleccion();
+                Cargar();
+            }
+            catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
     }
 }

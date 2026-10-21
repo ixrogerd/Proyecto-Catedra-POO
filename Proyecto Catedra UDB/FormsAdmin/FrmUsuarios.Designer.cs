@@ -39,6 +39,11 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnReactivar = new System.Windows.Forms.Button();
+            this.txtNuevaClave = new System.Windows.Forms.TextBox();
+            this.Clave = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.grpBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -87,8 +92,12 @@
             // 
             // grpBusqueda
             // 
+            this.grpBusqueda.Controls.Add(this.txtNuevaClave);
+            this.grpBusqueda.Controls.Add(this.Clave);
             this.grpBusqueda.Controls.Add(this.lblBuscar);
+            this.grpBusqueda.Controls.Add(this.txtUsername);
             this.grpBusqueda.Controls.Add(this.txtBuscar);
+            this.grpBusqueda.Controls.Add(this.label1);
             this.grpBusqueda.Controls.Add(this.lblTipo);
             this.grpBusqueda.Controls.Add(this.cmbTipoUsuario);
             this.grpBusqueda.Controls.Add(this.btnBuscar);
@@ -170,6 +179,7 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(790, 270);
             this.dgvUsuarios.TabIndex = 21;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // btnActualizar
             // 
@@ -196,7 +206,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(160, 38);
             this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.Text = "INHABILITAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -214,11 +224,61 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnReactivar
+            // 
+            this.btnReactivar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnReactivar.FlatAppearance.BorderSize = 0;
+            this.btnReactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReactivar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnReactivar.ForeColor = System.Drawing.Color.White;
+            this.btnReactivar.Location = new System.Drawing.Point(627, 575);
+            this.btnReactivar.Name = "btnReactivar";
+            this.btnReactivar.Size = new System.Drawing.Size(160, 38);
+            this.btnReactivar.TabIndex = 25;
+            this.btnReactivar.Text = "REACTIVAR";
+            this.btnReactivar.UseVisualStyleBackColor = false;
+            this.btnReactivar.Click += new System.EventHandler(this.btnReactivar_Click);
+            // 
+            // txtNuevaClave
+            // 
+            this.txtNuevaClave.Location = new System.Drawing.Point(440, 78);
+            this.txtNuevaClave.Name = "txtNuevaClave";
+            this.txtNuevaClave.Size = new System.Drawing.Size(180, 23);
+            this.txtNuevaClave.TabIndex = 29;
+            // 
+            // Clave
+            // 
+            this.Clave.AutoSize = true;
+            this.Clave.ForeColor = System.Drawing.Color.Black;
+            this.Clave.Location = new System.Drawing.Point(366, 81);
+            this.Clave.Name = "Clave";
+            this.Clave.Size = new System.Drawing.Size(69, 15);
+            this.Clave.TabIndex = 28;
+            this.Clave.Text = "Contraseña";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(90, 76);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(270, 23);
+            this.txtUsername.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(20, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Usuario";
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.btnReactivar);
             this.Controls.Add(this.lblTituloUsuarios);
             this.Controls.Add(this.grpBusqueda);
             this.Controls.Add(this.dgvUsuarios);
@@ -227,6 +287,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Name = "FrmUsuarios";
             this.Text = "Gestión de Usuarios";
+            this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
             this.Controls.SetChildIndex(this.btnEliminar, 0);
             this.Controls.SetChildIndex(this.btnActualizar, 0);
@@ -236,6 +297,7 @@
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.Controls.SetChildIndex(this.btnReactivar, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.grpBusqueda.ResumeLayout(false);
@@ -247,5 +309,11 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnReactivar;
+        private System.Windows.Forms.TextBox txtNuevaClave;
+        private System.Windows.Forms.Label Clave;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -1,19 +1,21 @@
-﻿using Proyecto_Catedra_UDB.Business;
+﻿using System;
+using System.Data;
+using System.Windows.Forms;
+using Capa_Entidad;
+using Capa_Negocio;
 using Proyecto_Catedra_UDB.FormsAdmin;
 using Proyecto_Catedra_UDB.FormsMedico;
 using Proyecto_Catedra_UDB.FormsPaciente;
-using Proyecto_Catedra_UDB.Models;
-using System;
-using System.Windows.Forms;
-
 namespace Proyecto_Catedra_UDB
 {
     public partial class FrmLogin : Form
     {
+        private readonly N_Usuario negocio = new N_Usuario();
+
         public FrmLogin()
         {
             InitializeComponent();
-            AcceptButton = btnIniciarSesion;          // Enter = iniciar sesion
+            AcceptButton = btnIniciarSesion;          // Enter = iniciar sesión
             txtContraseña.UseSystemPasswordChar = true;
         }
 
@@ -31,10 +33,10 @@ namespace Proyecto_Catedra_UDB
 
             try
             {
-                // Capa de negocio: valida, hashea, consulta y abre la sesion
-                Usuario usuario = UsuarioBLL.Login(username, password);
+                E_Usuario obj = new E_Usuario { usuario = username, clave = password };
+                DataTable dt = negocio.Login(obj);
 
-                if (usuario == null)
+                if (dt.Rows.Count == 0)
                 {
                     MessageBox.Show("Usuario o contraseña incorrectos.", "Error de Autenticación",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,22 +45,31 @@ namespace Proyecto_Catedra_UDB
                     return;
                 }
 
-                Form menu = CrearMenuPorRol(usuario.ID_Rol);
+                // Guardar la sesión
+                DataRow fila = dt.Rows[0];
+                Sesion.IdUsuario = Convert.ToInt32(fila["ID_Usuario"]);
+                Sesion.Username = fila["Username"].ToString();
+                Sesion.IdRol = Convert.ToInt32(fila["ID_Rol"]);
+                Sesion.Rol = fila["Rol"].ToString();
+                Sesion.NombreCompleto = fila["NombreCompleto"].ToString();
+
+                // Redirigir según el rol
+                Form menu = CrearMenuPorRol(Sesion.IdRol);
                 if (menu == null)
                 {
-                    Sesion.Cerrar();
+                    Sesion.Limpiar();
                     MessageBox.Show("El rol de este usuario no tiene un menú asignado.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Al cerrar el menú con la X o con "Cerrar sesión" se vuelve al login.
+                // Al cerrar el menú (X o "Cerrar sesión") se vuelve al login.
                 // Application.Exit() ("Cerrar aplicación") sí termina el programa.
                 menu.FormClosed += (s, args) =>
                 {
                     if (args.CloseReason == CloseReason.UserClosing || args.CloseReason == CloseReason.None)
                     {
-                        Sesion.Cerrar();
+                        Sesion.Limpiar();
                         txtUsuario.Clear();
                         txtContraseña.Clear();
                         Show();
@@ -80,9 +91,9 @@ namespace Proyecto_Catedra_UDB
         {
             switch (idRol)
             {
-                case Roles.Paciente: return new FrmInicioPaciente();
-                case Roles.Medico: return new FrmInicioMedico();
-                case Roles.Administrador: return new FrmInicioAdmin();
+                case Sesion.Paciente: return new FrmInicioPaciente();
+                case Sesion.Medico: return new FrmInicioMedico();
+                case Sesion.Administrador: return new FrmInicioAdmin();
                 default: return null;
             }
         }

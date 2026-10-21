@@ -49,10 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\Seguridad.cs" />
-    <Compile Include="Business\UsuarioBLL.cs" />
-    <Compile Include="Connection\DbConnection.cs" />
-    <Compile Include="Data\UsuarioDAO.cs" />
     <Compile Include="FormsAdmin\FrmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,9 +73,6 @@
     <Compile Include="FormsPaciente\FrmInicioPaciente.Designer.cs">
       <DependentUpon>FrmInicioPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\Sesion.cs" />
-    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Plantilla\FrmPaciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +163,7 @@
     <Compile Include="FormsAdmin\FrmUsuarios.Designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plantilla\Ui.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormsAdmin\FrmInicioAdmin.resx">
@@ -251,6 +245,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Capa_Entidad\Capa_Entidad.csproj">
+      <Project>{31ad3144-5f38-4e12-bad8-cf584cd72828}</Project>
+      <Name>Capa_Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa_Negocio\Capa_Negocio.csproj">
+      <Project>{284660b0-709b-4fb6-8a1f-c3d4b5eea4d0}</Project>
+      <Name>Capa_Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
