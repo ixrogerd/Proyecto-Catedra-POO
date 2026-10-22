@@ -36,6 +36,7 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -137,11 +138,22 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "CONSULTAR DISPONIBILIDAD";
             // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblInfo.Location = new System.Drawing.Point(542, 441);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(0, 13);
+            this.lblInfo.TabIndex = 19;
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // FrmDisponibilidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dtpFecha);
@@ -152,6 +164,7 @@
             this.Controls.Add(this.cbEspecialidad);
             this.Name = "FrmDisponibilidad";
             this.Text = "Disponibilidad Medica";
+            this.Load += new System.EventHandler(this.FrmDisponibilidad_Load);
             this.Controls.SetChildIndex(this.cbEspecialidad, 0);
             this.Controls.SetChildIndex(this.cbMedico, 0);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -160,6 +173,7 @@
             this.Controls.SetChildIndex(this.dtpFecha, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.lblInfo, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
@@ -180,5 +194,6 @@
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

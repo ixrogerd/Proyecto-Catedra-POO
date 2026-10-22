@@ -46,9 +46,14 @@ namespace Capa_Negocio
         // Convierte errores de duplicado de SQL en mensajes entendibles
         public static Exception Traducir(SqlException ex)
         {
+            // Errores controlados de sp_AgendarCita: ya vienen en español
+            if (ex.Number >= 50001 && ex.Number <= 50005)
+                return new Exception(ex.Message);
+
             if (ex.Number == 2627 || ex.Number == 2601)
             {
                 string m = ex.Message;
+                if (m.Contains("UX_Cita_Medico_Horario")) return new Exception("Ese horario ya fue ocupado. Elija otra hora.");
                 if (m.Contains("Correo")) return new Exception("Ya existe un registro con ese correo.");
                 if (m.Contains("dbo.Usuario")) return new Exception("Ese nombre de usuario ya está en uso.");
                 if (m.Contains("dbo.Especialidad")) return new Exception("Esa especialidad ya existe.");

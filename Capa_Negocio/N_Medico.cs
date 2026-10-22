@@ -15,7 +15,7 @@ namespace Capa_Negocio
         D_Medico datos = new D_Medico();
 
         public DataTable Listar(string filtro) { return datos.Listar(filtro); }
-
+        public DataTable PorEspecialidad(int idEspecialidad) { return datos.PorEspecialidad(idEspecialidad); }
         public void Registrar(E_Medico m)
         {
             Validar.Cuenta(m.Username, m.Clave, true);

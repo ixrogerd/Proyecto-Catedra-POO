@@ -39,15 +39,15 @@
             this.btnAgendar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMotivo = new System.Windows.Forms.TextBox();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAgendarCita
             // 
-            this.btnAgendar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAgendar.FlatAppearance.BorderSize = 0;
-            this.btnAgendar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgendar.UseVisualStyleBackColor = false;
+            this.btnAgendarCita.FlatAppearance.BorderSize = 0;
             // 
             // btnCitas
             // 
@@ -146,39 +146,76 @@
             // 
             // btnAgendar
             // 
+            this.btnAgendar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAgendar.FlatAppearance.BorderSize = 0;
             this.btnAgendar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgendar.Location = new System.Drawing.Point(403, 400);
+            this.btnAgendar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAgendar.Location = new System.Drawing.Point(404, 450);
             this.btnAgendar.Name = "btnAgendar";
             this.btnAgendar.Size = new System.Drawing.Size(146, 48);
             this.btnAgendar.TabIndex = 23;
             this.btnAgendar.Text = "AGENDAR CITA";
             this.btnAgendar.UseVisualStyleBackColor = true;
+            this.btnAgendar.Click += new System.EventHandler(this.btnAgendar_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(275, 400);
+            this.btnLimpiar.Location = new System.Drawing.Point(276, 450);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(100, 48);
             this.btnLimpiar.TabIndex = 22;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(744, 400);
+            this.btnCancelar.Location = new System.Drawing.Point(745, 450);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(112, 48);
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(272, 360);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 21);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Motivo (OPCIONAL)";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtMotivo
+            // 
+            this.txtMotivo.Location = new System.Drawing.Point(279, 400);
+            this.txtMotivo.Multiline = true;
+            this.txtMotivo.Name = "txtMotivo";
+            this.txtMotivo.Size = new System.Drawing.Size(217, 25);
+            this.txtMotivo.TabIndex = 26;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(638, 357);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(38, 13);
+            this.lblInfo.TabIndex = 27;
+            this.lblInfo.Text = "label6";
             // 
             // FrmAgendarCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.txtMotivo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAgendar);
             this.Controls.Add(this.btnLimpiar);
@@ -206,6 +243,9 @@
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtMotivo, 0);
+            this.Controls.SetChildIndex(this.lblInfo, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -226,5 +266,8 @@
         private System.Windows.Forms.Button btnAgendar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMotivo;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

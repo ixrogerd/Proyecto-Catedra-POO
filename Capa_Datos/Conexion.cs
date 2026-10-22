@@ -36,7 +36,7 @@ namespace Capa_Datos
             }
         }
 
-        public static void Ejecutar(string sql, CommandType tipo, params SqlParameter[] ps)
+        public static int Ejecutar(string sql, CommandType tipo, params SqlParameter[] ps)
         {
             using (SqlConnection cn = Crear())
             using (SqlCommand cmd = new SqlCommand(sql, cn))
@@ -44,7 +44,7 @@ namespace Capa_Datos
                 cmd.CommandType = tipo;
                 cmd.Parameters.AddRange(ps);
                 cn.Open();
-                cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
         }
     }

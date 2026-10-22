@@ -47,5 +47,13 @@ namespace Capa_Datos
                 new SqlParameter("@Esp", m.IdEspecialidad),
                 new SqlParameter("@Id", m.Id));
         }
+        public DataTable PorEspecialidad(int idEspecialidad)
+        {
+            return Conexion.Tabla(
+                "SELECT ID_Medico, Nombre + ' ' + Apellido AS NombreCompleto " +
+                "FROM vw_MedicosActivos WHERE ID_Especialidad = @Esp ORDER BY Apellido, Nombre",
+                CommandType.Text,
+                new SqlParameter("@Esp", idEspecialidad));
+        }
     }
 }

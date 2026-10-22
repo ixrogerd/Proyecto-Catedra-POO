@@ -96,7 +96,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(217, 58);
+            this.txtDescripcion.Location = new System.Drawing.Point(203, 41);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(100, 25);
             this.txtDescripcion.TabIndex = 5;
@@ -104,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 38);
+            this.label1.Location = new System.Drawing.Point(203, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 17);
             this.label1.TabIndex = 4;

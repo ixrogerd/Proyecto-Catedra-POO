@@ -29,5 +29,9 @@ namespace Proyecto_Catedra_UDB.Plantilla
 
         public static void Error(string m)
         { MessageBox.Show(m, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        public static int IdSeleccionado(ComboBox cb)
+        {
+            return cb.SelectedValue is int ? (int)cb.SelectedValue : 0;
+        }
     }
 }
