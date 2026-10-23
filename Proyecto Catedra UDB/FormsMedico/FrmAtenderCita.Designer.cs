@@ -54,6 +54,8 @@
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.cboCita = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.grpDatosCita.SuspendLayout();
             this.grpConsulta.SuspendLayout();
@@ -91,6 +93,8 @@
             // 
             // grpDatosCita
             // 
+            this.grpDatosCita.Controls.Add(this.label1);
+            this.grpDatosCita.Controls.Add(this.cboCita);
             this.grpDatosCita.Controls.Add(this.lblPaciente);
             this.grpDatosCita.Controls.Add(this.txtPaciente);
             this.grpDatosCita.Controls.Add(this.lblFecha);
@@ -122,7 +126,7 @@
             this.txtPaciente.Location = new System.Drawing.Point(95, 27);
             this.txtPaciente.Name = "txtPaciente";
             this.txtPaciente.ReadOnly = true;
-            this.txtPaciente.Size = new System.Drawing.Size(650, 23);
+            this.txtPaciente.Size = new System.Drawing.Size(307, 23);
             this.txtPaciente.TabIndex = 1;
             // 
             // lblFecha
@@ -285,6 +289,23 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // cboCita
+            // 
+            this.cboCita.FormattingEnabled = true;
+            this.cboCita.Location = new System.Drawing.Point(553, 27);
+            this.cboCita.Name = "cboCita";
+            this.cboCita.Size = new System.Drawing.Size(169, 23);
+            this.cboCita.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(494, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Cita:";
+            // 
             // FrmAtenderCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,5 +337,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboCita;
     }
 }

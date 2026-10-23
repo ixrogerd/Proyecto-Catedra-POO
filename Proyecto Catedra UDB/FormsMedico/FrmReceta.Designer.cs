@@ -4,8 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.GroupBox grpPaciente;
-        private System.Windows.Forms.Label lblPaciente;
-        private System.Windows.Forms.TextBox txtPaciente;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DateTimePicker dtpFecha;
 
@@ -40,8 +38,6 @@
         private void InitializeComponent()
         {
             this.grpPaciente = new System.Windows.Forms.GroupBox();
-            this.lblPaciente = new System.Windows.Forms.Label();
-            this.txtPaciente = new System.Windows.Forms.TextBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.grpMedicamento = new System.Windows.Forms.GroupBox();
@@ -60,6 +56,8 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEmitir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboCita = new System.Windows.Forms.ComboBox();
             this.pnlMenu.SuspendLayout();
             this.grpPaciente.SuspendLayout();
             this.grpMedicamento.SuspendLayout();
@@ -98,8 +96,8 @@
             // 
             // grpPaciente
             // 
-            this.grpPaciente.Controls.Add(this.lblPaciente);
-            this.grpPaciente.Controls.Add(this.txtPaciente);
+            this.grpPaciente.Controls.Add(this.label1);
+            this.grpPaciente.Controls.Add(this.cboCita);
             this.grpPaciente.Controls.Add(this.lblFecha);
             this.grpPaciente.Controls.Add(this.dtpFecha);
             this.grpPaciente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -108,24 +106,7 @@
             this.grpPaciente.Size = new System.Drawing.Size(790, 80);
             this.grpPaciente.TabIndex = 20;
             this.grpPaciente.TabStop = false;
-            this.grpPaciente.Text = "DATOS DEL PACIENTE";
-            // 
-            // lblPaciente
-            // 
-            this.lblPaciente.AutoSize = true;
-            this.lblPaciente.Location = new System.Drawing.Point(20, 35);
-            this.lblPaciente.Name = "lblPaciente";
-            this.lblPaciente.Size = new System.Drawing.Size(58, 15);
-            this.lblPaciente.TabIndex = 0;
-            this.lblPaciente.Text = "Paciente:";
-            // 
-            // txtPaciente
-            // 
-            this.txtPaciente.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPaciente.Location = new System.Drawing.Point(95, 32);
-            this.txtPaciente.Name = "txtPaciente";
-            this.txtPaciente.Size = new System.Drawing.Size(400, 23);
-            this.txtPaciente.TabIndex = 1;
+            this.grpPaciente.Text = "DATOS DE LA CITA";
             // 
             // lblFecha
             // 
@@ -326,6 +307,23 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Cita:";
+            // 
+            // cboCita
+            // 
+            this.cboCita.FormattingEnabled = true;
+            this.cboCita.Location = new System.Drawing.Point(78, 32);
+            this.cboCita.Name = "cboCita";
+            this.cboCita.Size = new System.Drawing.Size(169, 23);
+            this.cboCita.TabIndex = 10;
+            // 
             // FrmReceta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,5 +359,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboCita;
     }
 }

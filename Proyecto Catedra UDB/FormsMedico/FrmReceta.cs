@@ -1,170 +1,128 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Capa_Entidad;
+using Capa_Negocio;
+using Proyecto_Catedra_UDB.Plantilla;
+using System.Collections.Generic;
 
 namespace Proyecto_Catedra_UDB
 {
     public partial class FrmReceta : FrmMedico
     {
+        private readonly N_Cita negCita = new N_Cita();
+        private readonly N_Receta negocio = new N_Receta();
+
         public FrmReceta()
         {
             InitializeComponent();
 
             btnInicio.BackColor = Color.LightBlue;
             btnInicio.ForeColor = Color.Black;
-
             btnReceta.BackColor = Color.SteelBlue;
             btnReceta.ForeColor = Color.White;
 
+            txtMedicamento.MaxLength = 100;
+            txtDosis.MaxLength = 50;
+            txtFrecuencia.MaxLength = 50;
+            txtDuracion.MaxLength = 50;
+            txtIndicaciones.MaxLength = 150;
+
+            dtpFecha.Enabled = false;          // la fecha de emisión la registra la BD
+            dtpFecha.Value = DateTime.Today;
+
+            cboCita.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCita.DisplayMember = "Texto";
+            cboCita.ValueMember = "ID_Cita";
+
+            Ui.ConfigurarGrid(dgvMedicamentos);
             ConfigurarTabla();
+            CargarCitas();
         }
 
         private void ConfigurarTabla()
         {
             dgvMedicamentos.Columns.Clear();
+            dgvMedicamentos.Columns.Add("Medicamento", "Medicamento");
+            dgvMedicamentos.Columns.Add("Dosis", "Dosis");
+            dgvMedicamentos.Columns.Add("Frecuencia", "Frecuencia");
+            dgvMedicamentos.Columns.Add("Duracion", "Duración");
+            dgvMedicamentos.Columns.Add("Indicaciones", "Indicaciones");
+        }
 
-            dgvMedicamentos.Columns.Add(
-                "Medicamento",
-                "Medicamento");
-
-            dgvMedicamentos.Columns.Add(
-                "Dosis",
-                "Dosis");
-
-            dgvMedicamentos.Columns.Add(
-                "Frecuencia",
-                "Frecuencia");
-
-            dgvMedicamentos.Columns.Add(
-                "Duracion",
-                "Duración");
-
-            dgvMedicamentos.Columns.Add(
-                "Indicaciones",
-                "Indicaciones");
+        // Solo citas atendidas que todavía no tienen receta
+        private void CargarCitas()
+        {
+            try { cboCita.DataSource = negCita.CitasParaReceta(Sesion.IdUsuario); }
+            catch (Exception ex) { Ui.Error(ex.Message); }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMedicamento.Text))
+            E_Medicamento m = new E_Medicamento
             {
-                MessageBox.Show(
-                    "Ingrese el nombre del medicamento.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                Medicamento = txtMedicamento.Text.Trim(),
+                Dosis = txtDosis.Text.Trim(),
+                Frecuencia = txtFrecuencia.Text.Trim(),
+                Duracion = txtDuracion.Text.Trim(),
+                Indicaciones = txtIndicaciones.Text.Trim()
+            };
 
-                txtMedicamento.Focus();
-                return;
-            }
+            try { negocio.ValidarMedicamento(m); }
+            catch (Exception ex) { Ui.Aviso(ex.Message); return; }
 
-            if (string.IsNullOrWhiteSpace(txtDosis.Text))
-            {
-                MessageBox.Show(
-                    "Ingrese la dosis del medicamento.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtDosis.Focus();
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtFrecuencia.Text))
-            {
-                MessageBox.Show(
-                    "Ingrese la frecuencia del medicamento.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtFrecuencia.Focus();
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDuracion.Text))
-            {
-                MessageBox.Show(
-                    "Ingrese la duración del tratamiento.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtDuracion.Focus();
-                return;
-            }
-
-            dgvMedicamentos.Rows.Add(
-                txtMedicamento.Text,
-                txtDosis.Text,
-                txtFrecuencia.Text,
-                txtDuracion.Text,
-                txtIndicaciones.Text);
-
+            dgvMedicamentos.Rows.Add(m.Medicamento, m.Dosis, m.Frecuencia, m.Duracion, m.Indicaciones);
             LimpiarMedicamento();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvMedicamentos.CurrentRow != null)
+            if (dgvMedicamentos.SelectedRows.Count == 0)
             {
-                dgvMedicamentos.Rows.Remove(
-                    dgvMedicamentos.CurrentRow);
+                Ui.Aviso("Seleccione un medicamento de la tabla.");
+                return;
             }
-            else
-            {
-                MessageBox.Show(
-                    "Seleccione un medicamento para eliminar.",
-                    "Eliminar medicamento",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
+            dgvMedicamentos.Rows.Remove(dgvMedicamentos.SelectedRows[0]);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtPaciente.Clear();
-            dtpFecha.Value = DateTime.Now;
-
             dgvMedicamentos.Rows.Clear();
-
             LimpiarMedicamento();
+            CargarCitas();
         }
 
         private void btnEmitir_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPaciente.Text))
+            int idCita = Ui.IdSeleccionado(cboCita);
+            if (idCita == 0)
             {
-                MessageBox.Show(
-                    "Ingrese el nombre del paciente.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtPaciente.Focus();
+                Ui.Aviso("Seleccione la cita de la receta (solo aparecen citas atendidas sin receta).");
                 return;
             }
 
-            if (dgvMedicamentos.Rows.Count == 0)
+            List<E_Medicamento> lista = new List<E_Medicamento>();
+            foreach (DataGridViewRow f in dgvMedicamentos.Rows)
             {
-                MessageBox.Show(
-                    "Debe agregar al menos un medicamento.",
-                    "Receta vacía",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
+                lista.Add(new E_Medicamento
+                {
+                    Medicamento = Convert.ToString(f.Cells["Medicamento"].Value),
+                    Dosis = Convert.ToString(f.Cells["Dosis"].Value),
+                    Frecuencia = Convert.ToString(f.Cells["Frecuencia"].Value),
+                    Duracion = Convert.ToString(f.Cells["Duracion"].Value),
+                    Indicaciones = Convert.ToString(f.Cells["Indicaciones"].Value)
+                });
             }
 
-            MessageBox.Show(
-                "La receta ha sido emitida correctamente.",
-                "Receta médica",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-            txtPaciente.Clear();
-            dgvMedicamentos.Rows.Clear();
-            LimpiarMedicamento();
+            try
+            {
+                negocio.Emitir(idCita, Sesion.IdUsuario, lista);
+                Ui.Info("Receta emitida correctamente.");
+                dgvMedicamentos.Rows.Clear();
+                LimpiarMedicamento();
+                CargarCitas();   // la cita ya no aparece: tiene receta
+            }
+            catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
 
         private void LimpiarMedicamento()
@@ -174,7 +132,6 @@ namespace Proyecto_Catedra_UDB
             txtFrecuencia.Clear();
             txtDuracion.Clear();
             txtIndicaciones.Clear();
-
             txtMedicamento.Focus();
         }
     }

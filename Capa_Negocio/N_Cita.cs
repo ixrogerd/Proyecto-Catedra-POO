@@ -88,5 +88,34 @@ namespace Capa_Negocio
             if (datos.Cancelar(idCita, idPaciente) == 0)
                 throw new Exception("Solo se pueden cancelar sus citas pendientes.");
         }
+
+        // ---------- Médico ----------
+        public DataTable CitasMedico(int idMedico, string estado, DateTime? fecha)
+        {
+            return datos.CitasMedico(idMedico, estado, fecha);
+        }
+
+        public DataTable CitasPorAtender(int idMedico) { return datos.CitasPorAtender(idMedico); }
+        public DataTable CitasParaReceta(int idMedico) { return datos.CitasParaReceta(idMedico); }
+        public DataTable Atencion(int idCita, int idMedico) { return datos.Atencion(idCita, idMedico); }
+        public DataTable RecetaMedico(int idCita, int idMedico) { return datos.RecetaMedico(idCita, idMedico); }
+
+        public void Atender(int idCita, int idMedico, string diagnostico, string tratamiento, string observaciones)
+        {
+            if (idCita <= 0) throw new Exception("Seleccione la cita que va a atender.");
+            Validar.Requerido(diagnostico, "diagnóstico", 500);
+            Validar.Requerido(tratamiento, "tratamiento", 500);
+            if (observaciones != null && observaciones.Length > 500)
+                throw new Exception("Las observaciones no pueden superar 500 caracteres.");
+            if (datos.Atender(idCita, idMedico, diagnostico, tratamiento, observaciones) == 0)
+                throw new Exception("La cita no existe, no es suya o ya no está pendiente.");
+        }
+
+        public void CancelarMedico(int idCita, int idMedico)
+        {
+            if (idCita <= 0) throw new Exception("Seleccione una cita.");
+            if (datos.CancelarMedico(idCita, idMedico) == 0)
+                throw new Exception("Solo se pueden cancelar sus citas pendientes.");
+        }
     }
 }

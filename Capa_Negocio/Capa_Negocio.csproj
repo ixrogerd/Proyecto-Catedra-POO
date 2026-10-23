@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="N_Cita.cs" />
     <Compile Include="N_Especialidad.cs" />
+    <Compile Include="N_Horario.cs" />
     <Compile Include="N_Medico.cs" />
     <Compile Include="N_Paciente.cs" />
+    <Compile Include="N_Receta.cs" />
     <Compile Include="N_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad.cs" />

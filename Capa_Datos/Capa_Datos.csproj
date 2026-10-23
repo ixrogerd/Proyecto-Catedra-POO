@@ -45,8 +45,10 @@
     <Compile Include="D_Cita.cs" />
     <Compile Include="D_Especialidad.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="D_Horario.cs" />
     <Compile Include="D_Medico.cs" />
     <Compile Include="D_Paciente.cs" />
+    <Compile Include="D_Receta.cs" />
     <Compile Include="D_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

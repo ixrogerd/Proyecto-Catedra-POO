@@ -76,5 +76,84 @@ namespace Capa_Datos
                 new SqlParameter("@C", idCita),
                 new SqlParameter("@P", idPaciente));
         }
+
+        // ---------- Médico ----------
+        private const string TextoCita =
+            "CONVERT(VARCHAR(10), Fecha, 103) + ' ' + LEFT(CONVERT(VARCHAR(8), Hora, 108), 5) + ' - ' + Paciente";
+
+        public DataTable CitasMedico(int idMedico, string estado, DateTime? fecha)
+        {
+            return Conexion.Tabla(
+                "SELECT ID_Cita, Fecha, Hora, Paciente, Motivo, Estado " +
+                "FROM vw_CitasDetalle WHERE ID_Medico = @M " +
+                "AND (@Estado IS NULL OR Estado = @Estado) " +
+                "AND (@Fecha IS NULL OR Fecha = @Fecha) " +
+                "ORDER BY Fecha DESC, Hora DESC",
+                CommandType.Text,
+                new SqlParameter("@M", idMedico),
+                new SqlParameter("@Estado", Conexion.Nulo(estado)),
+                new SqlParameter("@Fecha", fecha.HasValue ? (object)fecha.Value.Date : DBNull.Value));
+        }
+
+        public DataTable CitasPorAtender(int idMedico)
+        {
+            return Conexion.Tabla(
+                "SELECT ID_Cita, Fecha, Hora, Motivo, Paciente, " + TextoCita + " AS Texto " +
+                "FROM vw_CitasDetalle WHERE ID_Medico = @M AND Estado = 'Pendiente' ORDER BY Fecha, Hora",
+                CommandType.Text,
+                new SqlParameter("@M", idMedico));
+        }
+
+        public DataTable CitasParaReceta(int idMedico)
+        {
+            return Conexion.Tabla(
+                "SELECT ID_Cita, Fecha, Hora, Paciente, " + TextoCita + " AS Texto " +
+                "FROM vw_CitasDetalle v WHERE v.ID_Medico = @M AND v.Estado = 'Atendida' " +
+                "AND NOT EXISTS (SELECT 1 FROM Receta r WHERE r.ID_Cita = v.ID_Cita) " +
+                "ORDER BY v.Fecha DESC, v.Hora DESC",
+                CommandType.Text,
+                new SqlParameter("@M", idMedico));
+        }
+
+        public int Atender(int idCita, int idMedico, string diagnostico, string tratamiento, string observaciones)
+        {
+            return Conexion.Ejecutar(
+                "UPDATE Cita SET ID_Estado = 2, Diagnostico = @D, Tratamiento = @T, Observaciones = @O " +
+                "WHERE ID_Cita = @C AND ID_Medico = @M AND ID_Estado = 1",
+                CommandType.Text,
+                new SqlParameter("@D", diagnostico),
+                new SqlParameter("@T", tratamiento),
+                new SqlParameter("@O", Conexion.Nulo(observaciones)),
+                new SqlParameter("@C", idCita),
+                new SqlParameter("@M", idMedico));
+        }
+
+        public DataTable Atencion(int idCita, int idMedico)
+        {
+            return Conexion.Tabla(
+                "SELECT Diagnostico, Tratamiento, Observaciones FROM Cita WHERE ID_Cita = @C AND ID_Medico = @M",
+                CommandType.Text,
+                new SqlParameter("@C", idCita),
+                new SqlParameter("@M", idMedico));
+        }
+
+        public DataTable RecetaMedico(int idCita, int idMedico)
+        {
+            return Conexion.Tabla(
+                "SELECT r.Descripcion, r.Indicaciones FROM Receta r JOIN Cita c ON c.ID_Cita = r.ID_Cita " +
+                "WHERE r.ID_Cita = @C AND c.ID_Medico = @M",
+                CommandType.Text,
+                new SqlParameter("@C", idCita),
+                new SqlParameter("@M", idMedico));
+        }
+
+        public int CancelarMedico(int idCita, int idMedico)
+        {
+            return Conexion.Ejecutar(
+                "UPDATE Cita SET ID_Estado = 3 WHERE ID_Cita = @C AND ID_Medico = @M AND ID_Estado = 1",
+                CommandType.Text,
+                new SqlParameter("@C", idCita),
+                new SqlParameter("@M", idMedico));
+        }
     }
 }

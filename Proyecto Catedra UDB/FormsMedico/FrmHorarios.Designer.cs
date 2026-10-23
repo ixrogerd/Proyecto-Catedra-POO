@@ -14,8 +14,6 @@
         private System.Windows.Forms.Label lblHoraFin;
         private System.Windows.Forms.DateTimePicker dtpHoraFin;
 
-        private System.Windows.Forms.Button btnAgregarHorario;
-
         private System.Windows.Forms.DataGridView dgvHorarios;
 
         private System.Windows.Forms.Button btnEliminar;
@@ -41,11 +39,11 @@
             this.dtpHoraInicio = new System.Windows.Forms.DateTimePicker();
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
-            this.btnAgregarHorario = new System.Windows.Forms.Button();
             this.dgvHorarios = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.grpHorario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).BeginInit();
@@ -89,14 +87,13 @@
             this.grpHorario.Controls.Add(this.dtpHoraInicio);
             this.grpHorario.Controls.Add(this.lblHoraFin);
             this.grpHorario.Controls.Add(this.dtpHoraFin);
-            this.grpHorario.Controls.Add(this.btnAgregarHorario);
             this.grpHorario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.grpHorario.Location = new System.Drawing.Point(260, 150);
             this.grpHorario.Name = "grpHorario";
             this.grpHorario.Size = new System.Drawing.Size(790, 150);
             this.grpHorario.TabIndex = 20;
             this.grpHorario.TabStop = false;
-            this.grpHorario.Text = "NUEVO HORARIO";
+            this.grpHorario.Text = "Datos del horario";
             // 
             // lblDia
             // 
@@ -163,21 +160,6 @@
             this.dtpHoraFin.Size = new System.Drawing.Size(200, 23);
             this.dtpHoraFin.TabIndex = 5;
             // 
-            // btnAgregarHorario
-            // 
-            this.btnAgregarHorario.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAgregarHorario.FlatAppearance.BorderSize = 0;
-            this.btnAgregarHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarHorario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarHorario.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarHorario.Location = new System.Drawing.Point(440, 82);
-            this.btnAgregarHorario.Name = "btnAgregarHorario";
-            this.btnAgregarHorario.Size = new System.Drawing.Size(180, 35);
-            this.btnAgregarHorario.TabIndex = 6;
-            this.btnAgregarHorario.Text = "AGREGAR HORARIO";
-            this.btnAgregarHorario.UseVisualStyleBackColor = false;
-            this.btnAgregarHorario.Click += new System.EventHandler(this.btnAgregarHorario_Click);
-            // 
             // dgvHorarios
             // 
             this.dgvHorarios.AllowUserToAddRows = false;
@@ -193,6 +175,7 @@
             this.dgvHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHorarios.Size = new System.Drawing.Size(790, 220);
             this.dgvHorarios.TabIndex = 21;
+            this.dgvHorarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorarios_CellClick);
             // 
             // btnEliminar
             // 
@@ -219,7 +202,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(170, 38);
             this.btnGuardar.TabIndex = 24;
-            this.btnGuardar.Text = "GUARDAR HORARIOS";
+            this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -229,7 +212,7 @@
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLimpiar.Location = new System.Drawing.Point(735, 565);
+            this.btnLimpiar.Location = new System.Drawing.Point(602, 565);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(130, 38);
             this.btnLimpiar.TabIndex = 23;
@@ -237,11 +220,26 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.LightGray;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEditar.Location = new System.Drawing.Point(744, 565);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(130, 38);
+            this.btnEditar.TabIndex = 25;
+            this.btnEditar.Text = "EDITAR";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
             // FrmHorarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.grpHorario);
             this.Controls.Add(this.dgvHorarios);
             this.Controls.Add(this.btnEliminar);
@@ -249,6 +247,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Name = "FrmHorarios";
             this.Text = "Horarios";
+            this.Load += new System.EventHandler(this.FrmHorarios_Load);
             this.Controls.SetChildIndex(this.btnGuardar, 0);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
             this.Controls.SetChildIndex(this.btnEliminar, 0);
@@ -257,6 +256,7 @@
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.Controls.SetChildIndex(this.btnEditar, 0);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.grpHorario.ResumeLayout(false);
@@ -268,5 +268,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnEditar;
     }
 }

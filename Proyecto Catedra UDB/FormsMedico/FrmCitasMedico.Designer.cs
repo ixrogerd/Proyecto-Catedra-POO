@@ -95,6 +95,7 @@
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dtpFecha
             // 
@@ -134,29 +135,31 @@
             this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCitas.Location = new System.Drawing.Point(267, 318);
             this.dgvCitas.Name = "dgvCitas";
-            this.dgvCitas.Size = new System.Drawing.Size(317, 150);
+            this.dgvCitas.Size = new System.Drawing.Size(766, 246);
             this.dgvCitas.TabIndex = 5;
             this.dgvCitas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCitas_CellContentClick);
             // 
             // btnVerCita
             // 
             this.btnVerCita.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerCita.Location = new System.Drawing.Point(267, 501);
+            this.btnVerCita.Location = new System.Drawing.Point(267, 580);
             this.btnVerCita.Name = "btnVerCita";
             this.btnVerCita.Size = new System.Drawing.Size(134, 29);
             this.btnVerCita.TabIndex = 9;
             this.btnVerCita.Text = "VER CITA";
             this.btnVerCita.UseVisualStyleBackColor = true;
+            this.btnVerCita.Click += new System.EventHandler(this.btnVerCita_Click);
             // 
             // btnCancelarCita
             // 
             this.btnCancelarCita.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarCita.Location = new System.Drawing.Point(407, 501);
+            this.btnCancelarCita.Location = new System.Drawing.Point(407, 580);
             this.btnCancelarCita.Name = "btnCancelarCita";
             this.btnCancelarCita.Size = new System.Drawing.Size(177, 29);
             this.btnCancelarCita.TabIndex = 10;
             this.btnCancelarCita.Text = "CANCELAR CITA";
             this.btnCancelarCita.UseVisualStyleBackColor = true;
+            this.btnCancelarCita.Click += new System.EventHandler(this.btnCancelarCita_Click);
             // 
             // FrmCitasMedico
             // 
@@ -171,6 +174,7 @@
             this.Name = "FrmCitasMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Citas Medicas";
+            this.Load += new System.EventHandler(this.FrmCitasMedico_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.dgvCitas, 0);
             this.Controls.SetChildIndex(this.btnVerCita, 0);
