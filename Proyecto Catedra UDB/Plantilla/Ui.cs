@@ -19,6 +19,9 @@ namespace Proyecto_Catedra_UDB.Plantilla
             dgv.BackgroundColor = Color.White;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.DefaultCellStyle.ForeColor = Color.Black;
+            dgv.DefaultCellStyle.BackColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
         }
 
         public static void Info(string m)

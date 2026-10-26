@@ -33,7 +33,7 @@ namespace Proyecto_Catedra_UDB
             txtClave.MaxLength = 50;
             txtClave.UseSystemPasswordChar = true;
             dtpFechaNacimiento.MaxDate = DateTime.Today;
-            Ui.ConfigurarGrid(dataGridView1);
+            Ui.ConfigurarGrid(dgvPacientes);
 
 
             Limpiar();
@@ -44,13 +44,13 @@ namespace Proyecto_Catedra_UDB
         {
             try
             {
-                dataGridView1.DataSource = negocio.Listar(txtBuscar.Text.Trim());
-                dataGridView1.Columns["ID_Paciente"].Visible = false;
-                dataGridView1.Columns["Username"].HeaderText = "Usuario";
-                dataGridView1.Columns["FechaNacimiento"].HeaderText = "Fecha de nacimiento";
-                dataGridView1.Columns["FechaNacimiento"].DefaultCellStyle.Format = "dd/MM/yyyy";
-                dataGridView1.Columns["Telefono"].HeaderText = "Teléfono";
-                dataGridView1.ClearSelection();
+                dgvPacientes.DataSource = negocio.Listar(txtBuscar.Text.Trim());
+                dgvPacientes.Columns["ID_Paciente"].Visible = false;
+                dgvPacientes.Columns["Username"].HeaderText = "Usuario";
+                dgvPacientes.Columns["FechaNacimiento"].HeaderText = "Fecha de nacimiento";
+                dgvPacientes.Columns["FechaNacimiento"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dgvPacientes.Columns["Telefono"].HeaderText = "Teléfono";
+                dgvPacientes.ClearSelection();
             }
             catch (Exception ex) { Ui.Error(ex.Message); }
         }
@@ -66,7 +66,7 @@ namespace Proyecto_Catedra_UDB
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = true;
             dtpFechaNacimiento.Value = DateTime.Today.AddYears(-18);
-            dataGridView1.ClearSelection();
+            dgvPacientes.ClearSelection();
             txtNombre.Focus();
         }
         private E_Paciente Leer()
@@ -82,22 +82,6 @@ namespace Proyecto_Catedra_UDB
                 Telefono = txtTelefono.Text.Trim(),
                 Correo = txtCorreo.Text.Trim()
             };
-        }
-
-
-        private void grpDatos_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -166,7 +150,7 @@ namespace Proyecto_Catedra_UDB
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            DataGridViewRow f = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow f = dgvPacientes.Rows[e.RowIndex];
             idSeleccionado = Convert.ToInt32(f.Cells["ID_Paciente"].Value);
             txtNombre.Text = f.Cells["Nombre"].Value.ToString();
             txtApellido.Text = f.Cells["Apellido"].Value.ToString();
