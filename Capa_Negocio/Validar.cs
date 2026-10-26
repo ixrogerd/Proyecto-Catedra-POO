@@ -21,7 +21,7 @@ namespace Capa_Negocio
         public static void Telefono(string t)
         {
             if (string.IsNullOrWhiteSpace(t)) return;
-            if (!Regex.IsMatch(t.Trim(), @"^[0-9+\- ]{8,15}$"))
+            if (!Regex.IsMatch(t.Trim(), @"^\+?[0-9][0-9\- ]{7,14}$"))
                 throw new Exception("El teléfono no es válido.");
         }
 

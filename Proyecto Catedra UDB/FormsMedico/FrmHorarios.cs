@@ -20,14 +20,6 @@ namespace Proyecto_Catedra_UDB
             btnInicio.ForeColor = Color.Black;
             btnHorarios.BackColor = Color.SteelBlue;
             btnHorarios.ForeColor = Color.White;
-
-            Ui.ConfigurarGrid(dgvHorarios);
-            ConfigurarHora(dtpHoraInicio);
-            ConfigurarHora(dtpHoraFin);
-            dgvHorarios.CellClick += dgvHorarios_CellClick;
-
-            Limpiar();
-            Cargar();
         }
         private static void ConfigurarHora(DateTimePicker dtp)
         {
@@ -72,7 +64,19 @@ namespace Proyecto_Catedra_UDB
                 HoraFin = new TimeSpan(dtpHoraFin.Value.Hour, dtpHoraFin.Value.Minute, 0)
             };
         }
-        
+        private void FrmHorarios_Load(object sender, EventArgs e)
+        {
+
+            Ui.ConfigurarGrid(dgvHorarios);
+            ConfigurarHora(dtpHoraInicio);
+            ConfigurarHora(dtpHoraFin);
+            dgvHorarios.CellClick += dgvHorarios_CellClick;
+
+            Limpiar();
+            Cargar();
+
+        }
+
         private void btnAgregarHorario_Click(object sender, EventArgs e)
         {
             if (cmbDia.SelectedIndex == -1)
@@ -180,12 +184,6 @@ namespace Proyecto_Catedra_UDB
                 Cargar();
             }
             catch (Exception ex) { Ui.Aviso(ex.Message); }
-        }
-
-
-        private void FrmHorarios_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void dgvHorarios_CellClick(object sender, DataGridViewCellEventArgs e)

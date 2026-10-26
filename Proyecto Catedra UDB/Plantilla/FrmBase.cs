@@ -38,5 +38,10 @@ namespace Proyecto_Catedra_UDB
             frmLogin.Show();
             this.Hide();
         }
+
+        private void FrmBase_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); 
+        }
     }
 }
