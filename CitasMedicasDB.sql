@@ -53,7 +53,7 @@ CREATE TABLE Usuario (
     FechaRegistro      DATETIME NOT NULL DEFAULT GETDATE(),
     FechaDesactivacion DATETIME NULL
 );
-  
+
 /* ---------- ESPECIALIDAD ---------- */
 CREATE TABLE Especialidad (
     ID_Especialidad    INT IDENTITY(1,1) PRIMARY KEY,
@@ -157,7 +157,7 @@ JOIN Especialidad e ON e.ID_Especialidad = m.ID_Especialidad;
 GO
 
 /* =========================================================================
-   PROCEDIMIENTOS ALMACENADOS
+   PROCEDIMIENTOS ALMACENADOS (solo los que usa la aplicacion)
    ========================================================================= */
 
 /* ---- Registro (Usuario + subtipo en una sola transaccion) ---- */
@@ -198,25 +198,6 @@ BEGIN
         VALUES (@Id, @Nombre, @Apellido, @Telefono, @Correo, @ID_Especialidad);
     COMMIT;
     SELECT @Id AS ID_Medico;
-END
-GO
-
-CREATE PROCEDURE sp_RegistrarAdministrador
-    @Username VARCHAR(50), @PasswordHash VARCHAR(256),
-    @Nombre VARCHAR(60), @Apellido VARCHAR(60)
-AS
-BEGIN
-    SET NOCOUNT ON; SET XACT_ABORT ON;
-    BEGIN TRAN;
-        INSERT INTO Usuario (Username, PasswordHash, ID_Rol)
-        VALUES (@Username, @PasswordHash, 3);
-
-        DECLARE @Id INT = SCOPE_IDENTITY();
-
-        INSERT INTO Administrador (ID_Administrador, Nombre, Apellido)
-        VALUES (@Id, @Nombre, @Apellido);
-    COMMIT;
-    SELECT @Id AS ID_Administrador;
 END
 GO
 
@@ -337,10 +318,12 @@ INSERT INTO Especialidad (NombreEspecialidad, Descripcion) VALUES
 DECLARE @espGeneral INT = (SELECT ID_Especialidad FROM Especialidad WHERE NombreEspecialidad = N'Medicina General');
 DECLARE @espPedia   INT = (SELECT ID_Especialidad FROM Especialidad WHERE NombreEspecialidad = N'Pediatría');
 
--- Usuarios (Usuario + perfil en una sola transaccion cada uno)
-EXEC sp_RegistrarAdministrador @Username='admin', @PasswordHash=@hAdmin,
-     @Nombre=N'Admin', @Apellido=N'Sistema';
+-- Administrador de prueba (la aplicacion no tiene pantalla para registrar administradores)
+INSERT INTO Usuario (Username, PasswordHash, ID_Rol) VALUES ('admin', @hAdmin, 3);
+INSERT INTO Administrador (ID_Administrador, Nombre, Apellido)
+VALUES (SCOPE_IDENTITY(), N'Admin', N'Sistema');
 
+-- Medicos y pacientes (Usuario + perfil en una sola transaccion cada uno)
 EXEC sp_RegistrarMedico @Username='medico1', @PasswordHash=@hMed,
      @Nombre=N'Carlos', @Apellido=N'Martínez', @Telefono='7000-0001',
      @Correo='carlos.martinez@correo.com', @ID_Especialidad=@espGeneral;
