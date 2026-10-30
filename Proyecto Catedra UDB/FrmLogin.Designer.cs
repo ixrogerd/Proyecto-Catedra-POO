@@ -41,6 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbMostrarContra = new System.Windows.Forms.CheckBox();
             this.pnlSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciarSesion.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarSesion.ForeColor = System.Drawing.Color.White;
-            this.btnIniciarSesion.Location = new System.Drawing.Point(333, 354);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(333, 377);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(300, 45);
             this.btnIniciarSesion.TabIndex = 5;
@@ -148,7 +149,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.button1.Location = new System.Drawing.Point(512, 423);
+            this.button1.Location = new System.Drawing.Point(512, 428);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 25);
             this.button1.TabIndex = 20;
@@ -163,7 +164,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(366, 427);
+            this.label3.Location = new System.Drawing.Point(366, 432);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(154, 17);
             this.label3.TabIndex = 21;
@@ -178,12 +179,27 @@
             this.panel1.Size = new System.Drawing.Size(100, 100);
             this.panel1.TabIndex = 10;
             // 
+            // cbMostrarContra
+            // 
+            this.cbMostrarContra.AutoSize = true;
+            this.cbMostrarContra.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.cbMostrarContra.Location = new System.Drawing.Point(333, 336);
+            this.cbMostrarContra.Name = "cbMostrarContra";
+            this.cbMostrarContra.Size = new System.Drawing.Size(118, 17);
+            this.cbMostrarContra.TabIndex = 43;
+            this.cbMostrarContra.Text = "Mostrar Contraseña";
+            this.cbMostrarContra.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbMostrarContra.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.cbMostrarContra.UseVisualStyleBackColor = true;
+            this.cbMostrarContra.CheckedChanged += new System.EventHandler(this.cbMostrarContra_CheckedChanged);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(674, 511);
+            this.Controls.Add(this.cbMostrarContra);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblTitulo);
@@ -220,5 +236,6 @@
         private System.Windows.Forms.Label lblAplicacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox cbMostrarContra;
     }
 }

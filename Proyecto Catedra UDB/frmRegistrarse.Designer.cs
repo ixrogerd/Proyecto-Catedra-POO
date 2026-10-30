@@ -46,8 +46,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegistrarse = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
-            this.lblConfirmarClave = new System.Windows.Forms.Label();
-            this.txtConfirmarClave = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -58,13 +56,14 @@
             this.object_b6e53596_c515_4b6e_b7e2_944567c8f2d4 = new System.Windows.Forms.TabPage();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.object_f162e00b_c7c2_421e_aa64_1156bbe65736 = new System.Windows.Forms.TabControl();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlUsuario = new System.Windows.Forms.Panel();
+            this.cbMostrarContra = new System.Windows.Forms.CheckBox();
             this.pnlDatosPer = new System.Windows.Forms.Panel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.pnlUsuario.SuspendLayout();
             this.pnlDatosPer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSuperior
@@ -111,7 +110,7 @@
             this.btnSiguiente.ForeColor = System.Drawing.Color.Black;
             this.btnSiguiente.Location = new System.Drawing.Point(43, 319);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(305, 28);
+            this.btnSiguiente.Size = new System.Drawing.Size(300, 28);
             this.btnSiguiente.TabIndex = 24;
             this.btnSiguiente.Text = "Siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = false;
@@ -158,7 +157,7 @@
             this.txtCorreo.BackColor = System.Drawing.Color.White;
             this.txtCorreo.Location = new System.Drawing.Point(166, 200);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(182, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(177, 20);
             this.txtCorreo.TabIndex = 28;
             // 
             // label3
@@ -248,25 +247,6 @@
             this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // lblConfirmarClave
-            // 
-            this.lblConfirmarClave.AutoSize = true;
-            this.lblConfirmarClave.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmarClave.Location = new System.Drawing.Point(40, 182);
-            this.lblConfirmarClave.Name = "lblConfirmarClave";
-            this.lblConfirmarClave.Size = new System.Drawing.Size(145, 17);
-            this.lblConfirmarClave.TabIndex = 38;
-            this.lblConfirmarClave.Text = "Confirmar contraseña";
-            // 
-            // txtConfirmarClave
-            // 
-            this.txtConfirmarClave.BackColor = System.Drawing.Color.White;
-            this.txtConfirmarClave.Location = new System.Drawing.Point(43, 202);
-            this.txtConfirmarClave.Name = "txtConfirmarClave";
-            this.txtConfirmarClave.Size = new System.Drawing.Size(300, 20);
-            this.txtConfirmarClave.TabIndex = 39;
-            this.txtConfirmarClave.TextChanged += new System.EventHandler(this.txtConfirmarClave_TextChanged);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -313,7 +293,6 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(300, 20);
             this.txtClave.TabIndex = 36;
-            this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
             // 
             // label6
             // 
@@ -375,19 +354,14 @@
             this.object_f162e00b_c7c2_421e_aa64_1156bbe65736.TabIndex = 31;
             this.object_f162e00b_c7c2_421e_aa64_1156bbe65736.Visible = false;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // pnlUsuario
             // 
             this.pnlUsuario.BackColor = System.Drawing.Color.White;
+            this.pnlUsuario.Controls.Add(this.cbMostrarContra);
             this.pnlUsuario.Controls.Add(this.btnRegistrarse);
             this.pnlUsuario.Controls.Add(this.btnRegresar);
             this.pnlUsuario.Controls.Add(this.label7);
-            this.pnlUsuario.Controls.Add(this.lblConfirmarClave);
             this.pnlUsuario.Controls.Add(this.txtClave);
-            this.pnlUsuario.Controls.Add(this.txtConfirmarClave);
             this.pnlUsuario.Controls.Add(this.label9);
             this.pnlUsuario.Controls.Add(this.txtUsuario);
             this.pnlUsuario.Controls.Add(this.label8);
@@ -397,6 +371,18 @@
             this.pnlUsuario.Size = new System.Drawing.Size(385, 371);
             this.pnlUsuario.TabIndex = 11;
             this.pnlUsuario.Visible = false;
+            // 
+            // cbMostrarContra
+            // 
+            this.cbMostrarContra.AutoSize = true;
+            this.cbMostrarContra.Location = new System.Drawing.Point(43, 182);
+            this.cbMostrarContra.Name = "cbMostrarContra";
+            this.cbMostrarContra.Size = new System.Drawing.Size(118, 17);
+            this.cbMostrarContra.TabIndex = 42;
+            this.cbMostrarContra.Text = "Mostrar Contraseña";
+            this.cbMostrarContra.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.cbMostrarContra.UseVisualStyleBackColor = true;
+            this.cbMostrarContra.CheckedChanged += new System.EventHandler(this.cbMostrarContra_CheckedChanged);
             // 
             // pnlDatosPer
             // 
@@ -418,6 +404,10 @@
             this.pnlDatosPer.Size = new System.Drawing.Size(385, 374);
             this.pnlDatosPer.TabIndex = 12;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmRegistrarse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,19 +418,19 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pnlSuperior);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.pnlDatosPer);
             this.Controls.Add(this.pnlUsuario);
+            this.Controls.Add(this.pnlDatosPer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmRegistrarse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmRegistrarse";
             this.pnlSuperior.ResumeLayout(false);
             this.pnlSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.pnlUsuario.ResumeLayout(false);
             this.pnlUsuario.PerformLayout();
             this.pnlDatosPer.ResumeLayout(false);
             this.pnlDatosPer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,8 +454,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.Label lblConfirmarClave;
-        private System.Windows.Forms.TextBox txtConfirmarClave;
         protected System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtUsuario;
@@ -477,8 +465,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.TabControl object_f162e00b_c7c2_421e_aa64_1156bbe65736;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Panel pnlUsuario;
         private System.Windows.Forms.Panel pnlDatosPer;
+        private System.Windows.Forms.CheckBox cbMostrarContra;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

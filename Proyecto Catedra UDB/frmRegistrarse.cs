@@ -11,6 +11,7 @@ namespace Proyecto_Catedra_UDB
         public frmRegistrarse()
         {
             InitializeComponent();
+            txtClave.UseSystemPasswordChar = true;
             btnRegistrarse.Enabled = false;
             btnRegistrarse.BackColor = System.Drawing.Color.LightGray;
             pnlDatosPer.Visible = true;
@@ -65,28 +66,6 @@ namespace Proyecto_Catedra_UDB
             catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
 
-        private void txtConfirmarClave_TextChanged(object sender, EventArgs e)
-        {
-            errorProvider1.SetError(lblConfirmarClave, txtClave.Text != txtConfirmarClave.Text ? "Las contraseñas no coinciden." : "");
-
-            if (txtClave.Text == txtConfirmarClave.Text && !string.IsNullOrEmpty(txtClave.Text))
-            {
-                btnRegistrarse.Enabled = true;
-                btnRegistrarse.BackColor = System.Drawing.Color.SteelBlue;
-            }
-            else
-            {
-                btnRegistrarse.Enabled = false;
-                btnRegistrarse.BackColor = System.Drawing.Color.LightGray;
-            }
-        }
-
-        private void txtClave_TextChanged(object sender, EventArgs e)
-        {
-            if(!string.IsNullOrEmpty(txtConfirmarClave.Text))
-                txtConfirmarClave_TextChanged(sender, e);
-        }
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             pnlUsuario.Show();
@@ -97,6 +76,11 @@ namespace Proyecto_Catedra_UDB
         {
             pnlUsuario.Hide();
             pnlDatosPer.Show();
+        }
+
+        private void cbMostrarContra_CheckedChanged(object sender, EventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = !cbMostrarContra.Checked;
         }
     }
 }

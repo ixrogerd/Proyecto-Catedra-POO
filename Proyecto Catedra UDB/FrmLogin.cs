@@ -17,6 +17,7 @@ namespace Proyecto_Catedra_UDB
             InitializeComponent();
             AcceptButton = btnIniciarSesion;          // Enter = iniciar sesión
             txtContraseña.UseSystemPasswordChar = true;
+            
         }
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
@@ -108,6 +109,11 @@ namespace Proyecto_Catedra_UDB
             frmRegistrarse frmRegistrarse = new frmRegistrarse();
             frmRegistrarse.Show();
             this.Hide();
+        }
+
+        private void cbMostrarContra_CheckedChanged(object sender, EventArgs e)
+        {
+            txtContraseña.UseSystemPasswordChar = !cbMostrarContra.Checked;
         }
     }
 }
