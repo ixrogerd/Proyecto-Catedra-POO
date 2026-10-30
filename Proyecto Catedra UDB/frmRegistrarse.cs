@@ -11,6 +11,7 @@ namespace Proyecto_Catedra_UDB
         public frmRegistrarse()
         {
             InitializeComponent();
+            Ui.AplicarTema(this);
             txtClave.UseSystemPasswordChar = true;
             btnRegistrarse.Enabled = false;
             btnRegistrarse.BackColor = System.Drawing.Color.LightGray;
