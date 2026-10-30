@@ -130,5 +130,10 @@ namespace Proyecto_Catedra_UDB
             }
             Guardar("Especialidad registrada correctamente.");
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Cargar();
+        }
     }
 }

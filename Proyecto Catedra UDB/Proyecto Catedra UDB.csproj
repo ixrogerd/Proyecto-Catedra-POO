@@ -266,10 +266,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hide.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\show.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

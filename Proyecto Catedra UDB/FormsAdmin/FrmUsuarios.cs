@@ -10,6 +10,7 @@ namespace Proyecto_Catedra_UDB
     {
         private readonly N_Usuario negocio = new N_Usuario();
         private int idSeleccionado = 0;
+        private int idRolSeleccionado = 0;
 
         public FrmUsuarios()
         {
@@ -25,7 +26,8 @@ namespace Proyecto_Catedra_UDB
             txtNuevaClave.UseSystemPasswordChar = true;
             Ui.ConfigurarGrid(dgvUsuarios);
             dgvUsuarios.CellFormatting += dgvUsuarios_CellFormatting;
-
+            txtNuevaClave.Enabled = false;
+            cbMostrarClave.Enabled = false;
 
             Cargar();
         }
@@ -40,7 +42,7 @@ namespace Proyecto_Catedra_UDB
                 default: return 0;
             }
         }
-
+        // Carga los usuarios en el DataGridView según el texto de búsqueda y el tipo de usuario seleccionado
         private void Cargar()
         {
             try
@@ -59,22 +61,26 @@ namespace Proyecto_Catedra_UDB
             }
             catch (Exception ex) { Ui.Error(ex.Message); }
         }
-
+        // Limpia los campos de texto y el ID del usuario seleccionado
         private void LimpiarSeleccion()
         {
             idSeleccionado = 0;
+            idRolSeleccionado = 0;
             txtUsername.Clear();
             txtNuevaClave.Clear();
+            txtNuevaClave.Enabled = false;
+            cbMostrarClave.Checked = false;
+            cbMostrarClave.Enabled = false;
             dgvUsuarios.ClearSelection();
         }
 
-     
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             LimpiarSeleccion();
             Cargar();
         }
-
+        // Actualiza la cuenta del usuario seleccionado
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado == 0)
@@ -91,8 +97,8 @@ namespace Proyecto_Catedra_UDB
             }
             catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
+        // Inhabilita la cuenta del usuario seleccionado
+        private void btnInhabilitar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado == 0)
             {
@@ -106,7 +112,7 @@ namespace Proyecto_Catedra_UDB
 
             try
             {
-                negocio.Desactivar(idSeleccionado);
+                negocio.Desactivar(idSeleccionado, idRolSeleccionado);
                 LimpiarSeleccion();
                 Cargar();
             }
@@ -121,10 +127,7 @@ namespace Proyecto_Catedra_UDB
             Cargar();
         }
 
-        private void FrmUsuarios_Load(object sender, EventArgs e)
-        {
-
-        }
+        // Cambia el color de los usuarios inactivos a gris
         private void dgvUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -134,13 +137,19 @@ namespace Proyecto_Catedra_UDB
                 e.CellStyle.ForeColor = Color.Gray;
         }
 
+        // lleva el ID del usuario seleccionado a los campos de texto para poder editarlo
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             DataGridViewRow f = dgvUsuarios.Rows[e.RowIndex];
             idSeleccionado = Convert.ToInt32(f.Cells["ID_Usuario"].Value);
+            idRolSeleccionado = Convert.ToInt32(f.Cells["ID_Rol"].Value);
             txtUsername.Text = f.Cells["Username"].Value.ToString();
+            txtBuscar.Text = f.Cells["Nombre"].Value.ToString();
+            txtNuevaClave.Enabled = true;
             txtNuevaClave.Clear();
+            cbMostrarClave.Checked = false;
+            cbMostrarClave.Enabled = true;
         }
 
         private void btnReactivar_Click(object sender, EventArgs e)
@@ -152,11 +161,19 @@ namespace Proyecto_Catedra_UDB
             }
             try
             {
-                negocio.Reactivar(idSeleccionado);
+                negocio.Reactivar(idSeleccionado, idRolSeleccionado);
                 LimpiarSeleccion();
                 Cargar();
             }
             catch (Exception ex) { Ui.Aviso(ex.Message); }
         }
+
+        // Muestra u oculta la contraseña según el estado del checkbox
+        private void cbMostrarClave_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNuevaClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
+        }
+
+
     }
 }

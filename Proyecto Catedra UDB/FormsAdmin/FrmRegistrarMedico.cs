@@ -2,13 +2,7 @@
 using Capa_Negocio;
 using Proyecto_Catedra_UDB.Plantilla;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Proyecto_Catedra_UDB
 {
@@ -26,7 +20,6 @@ namespace Proyecto_Catedra_UDB
 
             txtNombre.MaxLength = 60;
             txtApellido.MaxLength = 60;
-            txtTelefono.MaxLength = 15;
             txtCorreo.MaxLength = 100;
             txtUsuario.MaxLength = 50;
             txtClave.MaxLength = 50;
@@ -37,7 +30,10 @@ namespace Proyecto_Catedra_UDB
             cboEspecialidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEspecialidad.DisplayMember = "NombreEspecialidad";
             cboEspecialidad.ValueMember = "ID_Especialidad";
-            try { cboEspecialidad.DataSource = new N_Especialidad().Listar(); }
+            try 
+            { 
+                cboEspecialidad.DataSource = new N_Especialidad().Listar();
+            }
             catch (Exception ex) { Ui.Error(ex.Message); }
 
           
@@ -45,6 +41,7 @@ namespace Proyecto_Catedra_UDB
             Limpiar();
             Cargar();
         }
+        
         private void Cargar()
         {
             try
@@ -66,11 +63,11 @@ namespace Proyecto_Catedra_UDB
             txtNombre.Clear();
             txtApellido.Clear();
             txtCorreo.Clear();
-            txtTelefono.Clear();
+            mtxTelefono.Clear();
             txtUsuario.Clear();
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = true;
-            cboEspecialidad.SelectedIndex = cboEspecialidad.Items.Count > 0 ? 0 : -1;
+            cboEspecialidad.SelectedIndex = -1;
             dgvMedicos.ClearSelection();
             txtNombre.Focus();
         }
@@ -84,15 +81,20 @@ namespace Proyecto_Catedra_UDB
                 Clave = txtClave.Text,
                 Nombre = txtNombre.Text.Trim(),
                 Apellido = txtApellido.Text.Trim(),
-                Telefono = txtTelefono.Text.Trim(),
+                Telefono = mtxTelefono.MaskFull ? mtxTelefono.Text : "",
                 Correo = txtCorreo.Text.Trim(),
                 IdEspecialidad = cboEspecialidad.SelectedValue == null
                     ? 0 : Convert.ToInt32(cboEspecialidad.SelectedValue)
             };
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
+        private string GenerarUsuario()
+        {
+            string usuario = txtNombre.Text.Trim().ToLower().Split(' ')[0] + "." + txtApellido.Text.Trim().ToLower().Split(' ')[0] + "_" + new Random().Next(100,999);
+            int contador = 1;
+            while (negocio.UsuarioExiste(usuario + contador))
+                contador++;
+            return usuario + contador;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -165,7 +167,7 @@ namespace Proyecto_Catedra_UDB
             idSeleccionado = Convert.ToInt32(f.Cells["ID_Medico"].Value);
             txtNombre.Text = f.Cells["Nombre"].Value.ToString();
             txtApellido.Text = f.Cells["Apellido"].Value.ToString();
-            txtTelefono.Text = f.Cells["Telefono"].Value.ToString();
+            mtxTelefono.Text = f.Cells["Telefono"].Value.ToString();
             txtCorreo.Text = f.Cells["Correo"].Value.ToString();
             txtUsuario.Text = f.Cells["Username"].Value.ToString();
             cboEspecialidad.SelectedValue = Convert.ToInt32(f.Cells["ID_Especialidad"].Value);
@@ -173,9 +175,24 @@ namespace Proyecto_Catedra_UDB
             txtUsuario.Enabled = txtClave.Enabled = false;
         }
 
-        private void FrmRegistrarMedico_Load(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
+            Cargar();
+        }
 
+        private void cbMostrarClave_CheckedChanged(object sender, EventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            txtUsuario.Text = GenerarUsuario();
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            txtUsuario.Text = GenerarUsuario();
         }
     }
 }

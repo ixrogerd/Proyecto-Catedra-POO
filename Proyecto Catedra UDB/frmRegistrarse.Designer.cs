@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +48,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblClave = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -57,13 +56,14 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.object_f162e00b_c7c2_421e_aa64_1156bbe65736 = new System.Windows.Forms.TabControl();
             this.pnlUsuario = new System.Windows.Forms.Panel();
-            this.cbMostrarContra = new System.Windows.Forms.CheckBox();
+            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
             this.pnlDatosPer = new System.Windows.Forms.Panel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mtxTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.errContraseña = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlSuperior.SuspendLayout();
             this.pnlUsuario.SuspendLayout();
             this.pnlDatosPer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errContraseña)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSuperior
@@ -111,7 +111,7 @@
             this.btnSiguiente.Location = new System.Drawing.Point(43, 319);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(300, 28);
-            this.btnSiguiente.TabIndex = 24;
+            this.btnSiguiente.TabIndex = 30;
             this.btnSiguiente.Text = "Siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = false;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
@@ -158,7 +158,7 @@
             this.txtCorreo.Location = new System.Drawing.Point(166, 200);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(177, 20);
-            this.txtCorreo.TabIndex = 28;
+            this.txtCorreo.TabIndex = 27;
             // 
             // label3
             // 
@@ -167,16 +167,8 @@
             this.label3.Location = new System.Drawing.Point(163, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 17);
-            this.label3.TabIndex = 27;
+            this.label3.TabIndex = 26;
             this.label3.Text = "Correo Electrónico";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.BackColor = System.Drawing.Color.White;
-            this.txtTelefono.Location = new System.Drawing.Point(43, 200);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(101, 20);
-            this.txtTelefono.TabIndex = 30;
             // 
             // label4
             // 
@@ -185,7 +177,7 @@
             this.label4.Location = new System.Drawing.Point(40, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 29;
+            this.label4.TabIndex = 24;
             this.label4.Text = "Teléfono";
             // 
             // label11
@@ -195,7 +187,7 @@
             this.label11.Location = new System.Drawing.Point(40, 242);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(138, 17);
-            this.label11.TabIndex = 34;
+            this.label11.TabIndex = 28;
             this.label11.Text = "Fecha de Nacimiento";
             // 
             // dtpFechaNacimiento
@@ -205,7 +197,7 @@
             this.dtpFechaNacimiento.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(300, 29);
-            this.dtpFechaNacimiento.TabIndex = 33;
+            this.dtpFechaNacimiento.TabIndex = 29;
             // 
             // label5
             // 
@@ -227,7 +219,7 @@
             this.btnRegistrarse.Location = new System.Drawing.Point(43, 264);
             this.btnRegistrarse.Name = "btnRegistrarse";
             this.btnRegistrarse.Size = new System.Drawing.Size(300, 35);
-            this.btnRegistrarse.TabIndex = 41;
+            this.btnRegistrarse.TabIndex = 40;
             this.btnRegistrarse.Text = "REGISTRARSE";
             this.btnRegistrarse.UseVisualStyleBackColor = false;
             this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
@@ -242,7 +234,7 @@
             this.btnRegresar.Location = new System.Drawing.Point(43, 319);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(300, 28);
-            this.btnRegresar.TabIndex = 40;
+            this.btnRegresar.TabIndex = 41;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
@@ -273,18 +265,19 @@
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(43, 94);
             this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.ReadOnly = true;
             this.txtUsuario.Size = new System.Drawing.Size(300, 20);
             this.txtUsuario.TabIndex = 34;
             // 
-            // label9
+            // lblClave
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(44, 130);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 17);
-            this.label9.TabIndex = 35;
-            this.label9.Text = "Contraseña";
+            this.lblClave.AutoSize = true;
+            this.lblClave.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClave.Location = new System.Drawing.Point(44, 130);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(78, 17);
+            this.lblClave.TabIndex = 35;
+            this.lblClave.Text = "Contraseña";
             // 
             // txtClave
             // 
@@ -293,6 +286,7 @@
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(300, 20);
             this.txtClave.TabIndex = 36;
+            this.txtClave.TextChanged += new System.EventHandler(this.txtClave_TextChanged);
             // 
             // label6
             // 
@@ -316,7 +310,7 @@
             this.btnLogin.Location = new System.Drawing.Point(515, 465);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(107, 25);
-            this.btnLogin.TabIndex = 32;
+            this.btnLogin.TabIndex = 42;
             this.btnLogin.Text = "Inicia Sesión";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -357,12 +351,12 @@
             // pnlUsuario
             // 
             this.pnlUsuario.BackColor = System.Drawing.Color.White;
-            this.pnlUsuario.Controls.Add(this.cbMostrarContra);
+            this.pnlUsuario.Controls.Add(this.cbMostrarClave);
             this.pnlUsuario.Controls.Add(this.btnRegistrarse);
             this.pnlUsuario.Controls.Add(this.btnRegresar);
             this.pnlUsuario.Controls.Add(this.label7);
             this.pnlUsuario.Controls.Add(this.txtClave);
-            this.pnlUsuario.Controls.Add(this.label9);
+            this.pnlUsuario.Controls.Add(this.lblClave);
             this.pnlUsuario.Controls.Add(this.txtUsuario);
             this.pnlUsuario.Controls.Add(this.label8);
             this.pnlUsuario.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -372,26 +366,26 @@
             this.pnlUsuario.TabIndex = 11;
             this.pnlUsuario.Visible = false;
             // 
-            // cbMostrarContra
+            // cbMostrarClave
             // 
-            this.cbMostrarContra.AutoSize = true;
-            this.cbMostrarContra.Location = new System.Drawing.Point(43, 182);
-            this.cbMostrarContra.Name = "cbMostrarContra";
-            this.cbMostrarContra.Size = new System.Drawing.Size(118, 17);
-            this.cbMostrarContra.TabIndex = 42;
-            this.cbMostrarContra.Text = "Mostrar Contraseña";
-            this.cbMostrarContra.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.cbMostrarContra.UseVisualStyleBackColor = true;
-            this.cbMostrarContra.CheckedChanged += new System.EventHandler(this.cbMostrarContra_CheckedChanged);
+            this.cbMostrarClave.AutoSize = true;
+            this.cbMostrarClave.Location = new System.Drawing.Point(43, 182);
+            this.cbMostrarClave.Name = "cbMostrarClave";
+            this.cbMostrarClave.Size = new System.Drawing.Size(118, 17);
+            this.cbMostrarClave.TabIndex = 37;
+            this.cbMostrarClave.Text = "Mostrar Contraseña";
+            this.cbMostrarClave.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.cbMostrarClave.UseVisualStyleBackColor = true;
+            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
             // 
             // pnlDatosPer
             // 
             this.pnlDatosPer.BackColor = System.Drawing.Color.Transparent;
+            this.pnlDatosPer.Controls.Add(this.mtxTelefono);
             this.pnlDatosPer.Controls.Add(this.label11);
             this.pnlDatosPer.Controls.Add(this.dtpFechaNacimiento);
             this.pnlDatosPer.Controls.Add(this.label5);
             this.pnlDatosPer.Controls.Add(this.txtApellido);
-            this.pnlDatosPer.Controls.Add(this.txtTelefono);
             this.pnlDatosPer.Controls.Add(this.label3);
             this.pnlDatosPer.Controls.Add(this.label1);
             this.pnlDatosPer.Controls.Add(this.label2);
@@ -404,9 +398,18 @@
             this.pnlDatosPer.Size = new System.Drawing.Size(385, 374);
             this.pnlDatosPer.TabIndex = 12;
             // 
-            // errorProvider1
+            // mtxTelefono
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.mtxTelefono.Location = new System.Drawing.Point(43, 199);
+            this.mtxTelefono.Mask = "0000-0000";
+            this.mtxTelefono.Name = "mtxTelefono";
+            this.mtxTelefono.Size = new System.Drawing.Size(100, 20);
+            this.mtxTelefono.TabIndex = 33;
+            // 
+            // errContraseña
+            // 
+            this.errContraseña.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errContraseña.ContainerControl = this;
             // 
             // frmRegistrarse
             // 
@@ -430,7 +433,7 @@
             this.pnlUsuario.PerformLayout();
             this.pnlDatosPer.ResumeLayout(false);
             this.pnlDatosPer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errContraseña)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +451,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label4;
         protected System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -457,7 +459,7 @@
         protected System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Button btnRegistrarse;
         private System.Windows.Forms.TabPage object_b6e53596_c515_4b6e_b7e2_944567c8f2d4;
@@ -467,7 +469,8 @@
         private System.Windows.Forms.TabControl object_f162e00b_c7c2_421e_aa64_1156bbe65736;
         private System.Windows.Forms.Panel pnlUsuario;
         private System.Windows.Forms.Panel pnlDatosPer;
-        private System.Windows.Forms.CheckBox cbMostrarContra;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox cbMostrarClave;
+        private System.Windows.Forms.ErrorProvider errContraseña;
+        private System.Windows.Forms.MaskedTextBox mtxTelefono;
     }
 }

@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.grpDatos = new System.Windows.Forms.GroupBox();
+            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
+            this.mtxTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.Clave = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -92,12 +92,13 @@
             // 
             // grpDatos
             // 
+            this.grpDatos.Controls.Add(this.cbMostrarClave);
+            this.grpDatos.Controls.Add(this.mtxTelefono);
             this.grpDatos.Controls.Add(this.txtClave);
             this.grpDatos.Controls.Add(this.Clave);
             this.grpDatos.Controls.Add(this.txtUsuario);
             this.grpDatos.Controls.Add(this.label1);
             this.grpDatos.Controls.Add(this.lblFecha);
-            this.grpDatos.Controls.Add(this.txtTelefono);
             this.grpDatos.Controls.Add(this.txtCorreo);
             this.grpDatos.Controls.Add(this.txtApellido);
             this.grpDatos.Controls.Add(this.txtNombre);
@@ -114,9 +115,29 @@
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del Paciente";
             // 
+            // cbMostrarClave
+            // 
+            this.cbMostrarClave.AutoSize = true;
+            this.cbMostrarClave.ForeColor = System.Drawing.Color.Black;
+            this.cbMostrarClave.Location = new System.Drawing.Point(554, 170);
+            this.cbMostrarClave.Name = "cbMostrarClave";
+            this.cbMostrarClave.Size = new System.Drawing.Size(186, 25);
+            this.cbMostrarClave.TabIndex = 31;
+            this.cbMostrarClave.Text = "Mostrar Contraseña";
+            this.cbMostrarClave.UseVisualStyleBackColor = true;
+            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
+            // 
+            // mtxTelefono
+            // 
+            this.mtxTelefono.Location = new System.Drawing.Point(277, 136);
+            this.mtxTelefono.Mask = "0000-0000";
+            this.mtxTelefono.Name = "mtxTelefono";
+            this.mtxTelefono.Size = new System.Drawing.Size(231, 29);
+            this.mtxTelefono.TabIndex = 22;
+            // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(572, 136);
+            this.txtClave.Location = new System.Drawing.Point(554, 136);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(231, 29);
             this.txtClave.TabIndex = 16;
@@ -125,7 +146,7 @@
             // 
             this.Clave.AutoSize = true;
             this.Clave.ForeColor = System.Drawing.Color.Black;
-            this.Clave.Location = new System.Drawing.Point(568, 112);
+            this.Clave.Location = new System.Drawing.Point(550, 112);
             this.Clave.Name = "Clave";
             this.Clave.Size = new System.Drawing.Size(99, 21);
             this.Clave.TabIndex = 15;
@@ -133,7 +154,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(572, 78);
+            this.txtUsuario.Location = new System.Drawing.Point(554, 72);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(231, 29);
             this.txtUsuario.TabIndex = 14;
@@ -142,7 +163,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(568, 54);
+            this.label1.Location = new System.Drawing.Point(550, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 21);
             this.label1.TabIndex = 13;
@@ -158,16 +179,9 @@
             this.lblFecha.TabIndex = 12;
             this.lblFecha.Text = "Fecha de Nacimiento";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(309, 136);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(231, 29);
-            this.txtTelefono.TabIndex = 11;
-            // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(309, 72);
+            this.txtCorreo.Location = new System.Drawing.Point(277, 72);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(231, 29);
             this.txtCorreo.TabIndex = 10;
@@ -178,6 +192,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(206, 29);
             this.txtApellido.TabIndex = 9;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // txtNombre
             // 
@@ -185,6 +200,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(207, 29);
             this.txtNombre.TabIndex = 8;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // dtpFechaNacimiento
             // 
@@ -199,7 +215,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.ForeColor = System.Drawing.Color.Black;
-            this.lblTelefono.Location = new System.Drawing.Point(305, 112);
+            this.lblTelefono.Location = new System.Drawing.Point(273, 112);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(80, 21);
             this.lblTelefono.TabIndex = 3;
@@ -209,7 +225,7 @@
             // 
             this.lblCorreo.AutoSize = true;
             this.lblCorreo.ForeColor = System.Drawing.Color.Black;
-            this.lblCorreo.Location = new System.Drawing.Point(305, 48);
+            this.lblCorreo.Location = new System.Drawing.Point(273, 48);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.Size = new System.Drawing.Size(63, 21);
             this.lblCorreo.TabIndex = 2;
@@ -252,17 +268,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(182, 22);
             this.txtBuscar.TabIndex = 7;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(935, 405);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(89, 38);
-            this.btnBuscar.TabIndex = 8;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgvPacientes
             // 
@@ -332,18 +338,15 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.dgvPacientes);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.grpDatos);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "FrmRegistrarPaciente";
             this.Text = "Gestion de Pacientes";
-            this.Load += new System.EventHandler(this.FrmRegistrarPaciente_Load);
             this.Controls.SetChildIndex(this.grpDatos, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);
-            this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.dgvPacientes, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
@@ -371,9 +374,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvPacientes;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
@@ -386,5 +387,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.MaskedTextBox mtxTelefono;
+        private System.Windows.Forms.CheckBox cbMostrarClave;
     }
 }

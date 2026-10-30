@@ -13,7 +13,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnActualizar;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnInhabilitar;
         private System.Windows.Forms.Button btnLimpiar;
 
         protected override void Dispose(bool disposing)
@@ -30,20 +30,21 @@
         {
             this.lblTituloUsuarios = new System.Windows.Forms.Label();
             this.grpBusqueda = new System.Windows.Forms.GroupBox();
+            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
+            this.txtNuevaClave = new System.Windows.Forms.TextBox();
+            this.Clave = new System.Windows.Forms.Label();
             this.lblBuscar = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
             this.cmbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnInhabilitar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnReactivar = new System.Windows.Forms.Button();
-            this.txtNuevaClave = new System.Windows.Forms.TextBox();
-            this.Clave = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.grpBusqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -92,6 +93,7 @@
             // 
             // grpBusqueda
             // 
+            this.grpBusqueda.Controls.Add(this.cbMostrarClave);
             this.grpBusqueda.Controls.Add(this.txtNuevaClave);
             this.grpBusqueda.Controls.Add(this.Clave);
             this.grpBusqueda.Controls.Add(this.lblBuscar);
@@ -109,6 +111,34 @@
             this.grpBusqueda.TabStop = false;
             this.grpBusqueda.Text = "BUSCAR USUARIO";
             // 
+            // cbMostrarClave
+            // 
+            this.cbMostrarClave.AutoSize = true;
+            this.cbMostrarClave.Location = new System.Drawing.Point(640, 80);
+            this.cbMostrarClave.Name = "cbMostrarClave";
+            this.cbMostrarClave.Size = new System.Drawing.Size(135, 19);
+            this.cbMostrarClave.TabIndex = 30;
+            this.cbMostrarClave.Text = "Mostrar Contraseña";
+            this.cbMostrarClave.UseVisualStyleBackColor = true;
+            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
+            // 
+            // txtNuevaClave
+            // 
+            this.txtNuevaClave.Location = new System.Drawing.Point(440, 78);
+            this.txtNuevaClave.Name = "txtNuevaClave";
+            this.txtNuevaClave.Size = new System.Drawing.Size(180, 23);
+            this.txtNuevaClave.TabIndex = 29;
+            // 
+            // Clave
+            // 
+            this.Clave.AutoSize = true;
+            this.Clave.ForeColor = System.Drawing.Color.Black;
+            this.Clave.Location = new System.Drawing.Point(366, 81);
+            this.Clave.Name = "Clave";
+            this.Clave.Size = new System.Drawing.Size(69, 15);
+            this.Clave.TabIndex = 28;
+            this.Clave.Text = "Contraseña";
+            // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
@@ -118,6 +148,13 @@
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Nombre:";
             // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(90, 76);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(270, 23);
+            this.txtUsername.TabIndex = 27;
+            // 
             // txtBuscar
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -125,6 +162,16 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(270, 23);
             this.txtBuscar.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(20, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Usuario";
             // 
             // lblTipo
             // 
@@ -196,19 +243,19 @@
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnEliminar
+            // btnInhabilitar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.LightGray;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.Location = new System.Drawing.Point(440, 575);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(160, 38);
-            this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "INHABILITAR";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnInhabilitar.BackColor = System.Drawing.Color.LightGray;
+            this.btnInhabilitar.FlatAppearance.BorderSize = 0;
+            this.btnInhabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInhabilitar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnInhabilitar.Location = new System.Drawing.Point(440, 575);
+            this.btnInhabilitar.Name = "btnInhabilitar";
+            this.btnInhabilitar.Size = new System.Drawing.Size(160, 38);
+            this.btnInhabilitar.TabIndex = 23;
+            this.btnInhabilitar.Text = "INHABILITAR";
+            this.btnInhabilitar.UseVisualStyleBackColor = false;
+            this.btnInhabilitar.Click += new System.EventHandler(this.btnInhabilitar_Click);
             // 
             // btnLimpiar
             // 
@@ -239,40 +286,6 @@
             this.btnReactivar.UseVisualStyleBackColor = false;
             this.btnReactivar.Click += new System.EventHandler(this.btnReactivar_Click);
             // 
-            // txtNuevaClave
-            // 
-            this.txtNuevaClave.Location = new System.Drawing.Point(440, 78);
-            this.txtNuevaClave.Name = "txtNuevaClave";
-            this.txtNuevaClave.Size = new System.Drawing.Size(180, 23);
-            this.txtNuevaClave.TabIndex = 29;
-            // 
-            // Clave
-            // 
-            this.Clave.AutoSize = true;
-            this.Clave.ForeColor = System.Drawing.Color.Black;
-            this.Clave.Location = new System.Drawing.Point(366, 81);
-            this.Clave.Name = "Clave";
-            this.Clave.Size = new System.Drawing.Size(69, 15);
-            this.Clave.TabIndex = 28;
-            this.Clave.Text = "Contraseña";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(90, 76);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(270, 23);
-            this.txtUsername.TabIndex = 27;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(20, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Usuario";
-            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,13 +296,12 @@
             this.Controls.Add(this.grpBusqueda);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnInhabilitar);
             this.Controls.Add(this.btnLimpiar);
             this.Name = "FrmUsuarios";
             this.Text = "Gestión de Usuarios";
-            this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
-            this.Controls.SetChildIndex(this.btnEliminar, 0);
+            this.Controls.SetChildIndex(this.btnInhabilitar, 0);
             this.Controls.SetChildIndex(this.btnActualizar, 0);
             this.Controls.SetChildIndex(this.dgvUsuarios, 0);
             this.Controls.SetChildIndex(this.grpBusqueda, 0);
@@ -315,5 +327,6 @@
         private System.Windows.Forms.Label Clave;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbMostrarClave;
     }
 }

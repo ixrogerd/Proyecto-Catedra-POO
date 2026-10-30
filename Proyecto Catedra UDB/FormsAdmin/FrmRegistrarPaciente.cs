@@ -3,6 +3,7 @@ using Capa_Negocio;
 using Proyecto_Catedra_UDB.Plantilla;
 using System;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Proyecto_Catedra_UDB
@@ -21,7 +22,6 @@ namespace Proyecto_Catedra_UDB
 
             txtNombre.MaxLength = 60;
             txtApellido.MaxLength = 60;
-            txtTelefono.MaxLength = 15;
             txtCorreo.MaxLength = 100;
             txtUsuario.MaxLength = 50;
             txtClave.MaxLength = 50;
@@ -55,7 +55,7 @@ namespace Proyecto_Catedra_UDB
             txtNombre.Clear();
             txtApellido.Clear();
             txtCorreo.Clear();
-            txtTelefono.Clear();
+            mtxTelefono.Clear();
             txtUsuario.Clear();
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = true;
@@ -73,11 +73,19 @@ namespace Proyecto_Catedra_UDB
                 Nombre = txtNombre.Text.Trim(),
                 Apellido = txtApellido.Text.Trim(),
                 FechaNacimiento = dtpFechaNacimiento.Value.Date,
-                Telefono = txtTelefono.Text.Trim(),
+                Telefono = mtxTelefono.MaskFull ? mtxTelefono.Text : "",
                 Correo = txtCorreo.Text.Trim()
             };
         }
 
+        private string GenerarUsuario()
+        {
+            string usuario = txtNombre.Text.Trim().ToLower().Split(' ')[0] + "." + txtApellido.Text.Trim().ToLower().Split(' ')[0] + "_" + new Random().Next(100, 999);
+            int contador = 1;
+            while (negocio.UsuarioExiste(usuario + contador))
+                contador++;
+            return usuario + contador;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado != 0)
@@ -149,16 +157,30 @@ namespace Proyecto_Catedra_UDB
             txtNombre.Text = f.Cells["Nombre"].Value.ToString();
             txtApellido.Text = f.Cells["Apellido"].Value.ToString();
             dtpFechaNacimiento.Value = Convert.ToDateTime(f.Cells["FechaNacimiento"].Value);
-            txtTelefono.Text = f.Cells["Telefono"].Value.ToString();
+            mtxTelefono.Text = f.Cells["Telefono"].Value.ToString();
             txtCorreo.Text = f.Cells["Correo"].Value.ToString();
             txtUsuario.Text = f.Cells["Username"].Value.ToString();
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = false;   // la cuenta se edita en Usuarios
         }
 
-        private void FrmRegistrarPaciente_Load(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
+            Cargar();
+        }
+        private void cbMostrarClave_CheckedChanged(object sender, EventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
+        }
 
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            txtUsuario.Text = GenerarUsuario();
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            txtUsuario.Text = GenerarUsuario();
         }
     }
 }

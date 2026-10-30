@@ -2,6 +2,7 @@
 using Capa_Negocio;
 using Proyecto_Catedra_UDB.Plantilla;
 using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace Proyecto_Catedra_UDB
@@ -29,9 +30,18 @@ namespace Proyecto_Catedra_UDB
                 Nombre = txtNombre.Text.Trim(),
                 Apellido = txtApellido.Text.Trim(),
                 FechaNacimiento = dtpFechaNacimiento.Value.Date,
-                Telefono = txtTelefono.Text.Trim(),
+                Telefono = mtxTelefono.MaskFull ? mtxTelefono.Text : "",
                 Correo = txtCorreo.Text.Trim()
             };
+        }
+
+        private string GenerarUsuario()
+        {
+            string usuario = txtNombre.Text.Trim().ToLower().Split(' ')[0] + "." + txtApellido.Text.Trim().ToLower().Split(' ')[0] + "_" + new Random().Next(100, 999);
+            int contador = 1;
+            while (negocio.UsuarioExiste(usuario + contador))
+                contador++;
+            return usuario + contador;
         }
 
         private void Limpiar()
@@ -39,7 +49,7 @@ namespace Proyecto_Catedra_UDB
             txtNombre.Clear();
             txtApellido.Clear();
             txtCorreo.Clear();
-            txtTelefono.Clear();
+            mtxTelefono.Clear();
             txtUsuario.Clear();
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = true;
@@ -49,9 +59,7 @@ namespace Proyecto_Catedra_UDB
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void btnRegistrarse_Click(object sender, EventArgs e)
@@ -68,8 +76,15 @@ namespace Proyecto_Catedra_UDB
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            pnlUsuario.Show();
-            pnlDatosPer.Hide();
+            if (!string.IsNullOrWhiteSpace(txtNombre.Text) && !string.IsNullOrWhiteSpace(txtApellido.Text) && mtxTelefono.MaskFull)
+            {
+                txtUsuario.Text = GenerarUsuario();
+                pnlUsuario.Show();
+                pnlDatosPer.Hide();
+                txtUsuario.Focus();
+            }
+            else
+                Ui.Aviso("Complete los campos de nombre, apellido y teléfono antes de continuar.");
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -78,9 +93,26 @@ namespace Proyecto_Catedra_UDB
             pnlDatosPer.Show();
         }
 
-        private void cbMostrarContra_CheckedChanged(object sender, EventArgs e)
+        //Mostrar u ocultar contraseña 
+        private void cbMostrarClave_CheckedChanged(object sender, EventArgs e)
         {
-            txtClave.UseSystemPasswordChar = !cbMostrarContra.Checked;
+            txtClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
         }
+
+        private void txtClave_TextChanged(object sender, EventArgs e)
+        {
+            errContraseña.SetError(lblClave,txtClave.Text.Length <6 ? "La contraseña debe tener al menos 6 caracteres." : "");
+            if (txtClave.Text.Length >= 6)
+            {
+                btnRegistrarse.Enabled = true;
+                btnRegistrarse.BackColor = System.Drawing.Color.FromArgb(0, 122, 204);
+            }
+            else
+            {
+                btnRegistrarse.Enabled = false;
+                btnRegistrarse.BackColor = System.Drawing.Color.LightGray;
+            }
+        }
+
     }
 }

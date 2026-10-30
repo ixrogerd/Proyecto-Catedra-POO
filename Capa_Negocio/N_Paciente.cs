@@ -46,5 +46,15 @@ namespace Capa_Negocio
             if (id <= 0) throw new Exception("Seleccione un paciente.");
             new D_Usuario().Desactivar(id);
         }
+
+        public bool UsuarioExiste(string username)
+        {
+            foreach (DataRow row in datos.Listar("").Rows)
+            {
+                if (row["Username"].ToString().Equals(username, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+            return false;
+        }
     }
 }

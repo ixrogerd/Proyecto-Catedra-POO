@@ -30,14 +30,21 @@ namespace Capa_Negocio
             try { datos.ActualizarCuenta(id, username.Trim(), hash); }
             catch (SqlException ex) { throw Validar.Traducir(ex); }
         }
-
-        public void Desactivar(int id)
+        // Desactiva la cuenta del usuario con el ID especificado, lanzando una excepción si intenta desactivar su propia cuenta o la de un administrador
+        public void Desactivar(int id, int idRol)
         {
             if (id == Sesion.IdUsuario)
                 throw new Exception("No puede inhabilitar su propia cuenta.");
+            if(idRol == Sesion.IdRol)
+                throw new Exception("No puede inhabilitar la cuenta de un administrador.");
             datos.Desactivar(id);
         }
-
-        public void Reactivar(int id) { datos.Reactivar(id); }
+        //reactiva la cuenta del usuario con el ID especificado, lanzando una excepción si intenta reactivar la cuenta de un administrador
+        public void Reactivar(int id, int idRol)
+        {
+            if (idRol == Sesion.IdRol)
+                throw new Exception("No puede reactivar la cuenta de un administrador.");
+            datos.Reactivar(id);
+        }
     }
 }

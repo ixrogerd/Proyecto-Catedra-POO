@@ -38,7 +38,7 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblAplicacion = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistrate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbMostrarContra = new System.Windows.Forms.CheckBox();
@@ -57,6 +57,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtUsuario.BackColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(333, 258);
             this.txtUsuario.Name = "txtUsuario";
@@ -141,22 +142,22 @@
             this.lblTitulo.TabIndex = 19;
             this.lblTitulo.Text = "INICIO DE SESIÓN";
             // 
-            // button1
+            // btnRegistrate
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.button1.Location = new System.Drawing.Point(512, 428);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 25);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Regístrate";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistrate.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegistrate.FlatAppearance.BorderSize = 0;
+            this.btnRegistrate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnRegistrate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrate.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrate.ForeColor = System.Drawing.Color.SteelBlue;
+            this.btnRegistrate.Location = new System.Drawing.Point(512, 428);
+            this.btnRegistrate.Name = "btnRegistrate";
+            this.btnRegistrate.Size = new System.Drawing.Size(95, 25);
+            this.btnRegistrate.TabIndex = 20;
+            this.btnRegistrate.Text = "Regístrate";
+            this.btnRegistrate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegistrate.UseVisualStyleBackColor = false;
+            this.btnRegistrate.Click += new System.EventHandler(this.btnRegistrate_Click);
             // 
             // label3
             // 
@@ -182,7 +183,6 @@
             // cbMostrarContra
             // 
             this.cbMostrarContra.AutoSize = true;
-            this.cbMostrarContra.CheckAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.cbMostrarContra.Location = new System.Drawing.Point(333, 336);
             this.cbMostrarContra.Name = "cbMostrarContra";
             this.cbMostrarContra.Size = new System.Drawing.Size(118, 17);
@@ -200,7 +200,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(674, 511);
             this.Controls.Add(this.cbMostrarContra);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRegistrate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.panel1);
@@ -232,7 +232,7 @@
         protected System.Windows.Forms.Panel pnlSuperior;
         private System.Windows.Forms.Label lblUser;
         protected System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegistrate;
         private System.Windows.Forms.Label lblAplicacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;

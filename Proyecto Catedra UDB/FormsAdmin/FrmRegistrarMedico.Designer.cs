@@ -32,11 +32,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dgvMedicos = new System.Windows.Forms.DataGridView();
             this.grpDatos = new System.Windows.Forms.GroupBox();
+            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
+            this.mtxTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.Clave = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -89,7 +89,7 @@
             // cboEspecialidad
             // 
             this.cboEspecialidad.FormattingEnabled = true;
-            this.cboEspecialidad.Location = new System.Drawing.Point(568, 215);
+            this.cboEspecialidad.Location = new System.Drawing.Point(574, 198);
             this.cboEspecialidad.Name = "cboEspecialidad";
             this.cboEspecialidad.Size = new System.Drawing.Size(121, 29);
             this.cboEspecialidad.TabIndex = 9;
@@ -97,7 +97,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(564, 191);
+            this.label6.Location = new System.Drawing.Point(570, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 21);
             this.label6.TabIndex = 8;
@@ -114,13 +114,14 @@
             // 
             // grpDatos
             // 
+            this.grpDatos.Controls.Add(this.cbMostrarClave);
+            this.grpDatos.Controls.Add(this.mtxTelefono);
             this.grpDatos.Controls.Add(this.txtClave);
             this.grpDatos.Controls.Add(this.Clave);
             this.grpDatos.Controls.Add(this.txtUsuario);
             this.grpDatos.Controls.Add(this.label1);
             this.grpDatos.Controls.Add(this.cboEspecialidad);
             this.grpDatos.Controls.Add(this.label6);
-            this.grpDatos.Controls.Add(this.txtTelefono);
             this.grpDatos.Controls.Add(this.txtCorreo);
             this.grpDatos.Controls.Add(this.txtApellido);
             this.grpDatos.Controls.Add(this.txtNombre);
@@ -131,14 +132,34 @@
             this.grpDatos.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDatos.Location = new System.Drawing.Point(269, 133);
             this.grpDatos.Name = "grpDatos";
-            this.grpDatos.Size = new System.Drawing.Size(701, 252);
+            this.grpDatos.Size = new System.Drawing.Size(701, 260);
             this.grpDatos.TabIndex = 10;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del Médico";
             // 
+            // cbMostrarClave
+            // 
+            this.cbMostrarClave.AutoSize = true;
+            this.cbMostrarClave.ForeColor = System.Drawing.Color.Black;
+            this.cbMostrarClave.Location = new System.Drawing.Point(309, 229);
+            this.cbMostrarClave.Name = "cbMostrarClave";
+            this.cbMostrarClave.Size = new System.Drawing.Size(186, 25);
+            this.cbMostrarClave.TabIndex = 32;
+            this.cbMostrarClave.Text = "Mostrar Contraseña";
+            this.cbMostrarClave.UseVisualStyleBackColor = true;
+            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
+            // 
+            // mtxTelefono
+            // 
+            this.mtxTelefono.Location = new System.Drawing.Point(309, 136);
+            this.mtxTelefono.Mask = "0000-0000";
+            this.mtxTelefono.Name = "mtxTelefono";
+            this.mtxTelefono.Size = new System.Drawing.Size(231, 29);
+            this.mtxTelefono.TabIndex = 21;
+            // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(309, 210);
+            this.txtClave.Location = new System.Drawing.Point(309, 198);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(231, 29);
             this.txtClave.TabIndex = 20;
@@ -147,7 +168,7 @@
             // 
             this.Clave.AutoSize = true;
             this.Clave.ForeColor = System.Drawing.Color.Black;
-            this.Clave.Location = new System.Drawing.Point(305, 186);
+            this.Clave.Location = new System.Drawing.Point(305, 174);
             this.Clave.Name = "Clave";
             this.Clave.Size = new System.Drawing.Size(99, 21);
             this.Clave.TabIndex = 19;
@@ -155,7 +176,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(26, 210);
+            this.txtUsuario.Location = new System.Drawing.Point(26, 198);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(231, 29);
             this.txtUsuario.TabIndex = 18;
@@ -164,18 +185,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(22, 186);
+            this.label1.Location = new System.Drawing.Point(22, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 21);
             this.label1.TabIndex = 17;
             this.label1.Text = "Usuario";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(309, 136);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(231, 29);
-            this.txtTelefono.TabIndex = 11;
             // 
             // txtCorreo
             // 
@@ -190,6 +204,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(206, 29);
             this.txtApellido.TabIndex = 9;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // txtNombre
             // 
@@ -197,6 +212,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(207, 29);
             this.txtNombre.TabIndex = 8;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // lblTelefono
             // 
@@ -238,23 +254,13 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(935, 414);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(89, 38);
-            this.btnBuscar.TabIndex = 13;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(747, 425);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(182, 22);
             this.txtBuscar.TabIndex = 12;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
             // 
@@ -321,19 +327,16 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.grpDatos);
             this.Controls.Add(this.dgvMedicos);
             this.Name = "FrmRegistrarMedico";
             this.Text = "Gestion de Medicos";
-            this.Load += new System.EventHandler(this.FrmRegistrarMedico_Load);
             this.Controls.SetChildIndex(this.dgvMedicos, 0);
             this.Controls.SetChildIndex(this.grpDatos, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);
-            this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
@@ -356,7 +359,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvMedicos;
         private System.Windows.Forms.GroupBox grpDatos;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtNombre;
@@ -364,7 +366,6 @@
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtClave;
@@ -375,5 +376,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.MaskedTextBox mtxTelefono;
+        private System.Windows.Forms.CheckBox cbMostrarClave;
     }
 }

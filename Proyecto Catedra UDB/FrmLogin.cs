@@ -48,11 +48,13 @@ namespace Proyecto_Catedra_UDB
 
                 // Guardar la sesión
                 DataRow fila = dt.Rows[0];
-                Sesion.IdUsuario = Convert.ToInt32(fila["ID_Usuario"]);
-                Sesion.Username = fila["Username"].ToString();
-                Sesion.IdRol = Convert.ToInt32(fila["ID_Rol"]);
-                Sesion.Rol = fila["Rol"].ToString();
-                Sesion.NombreCompleto = fila["NombreCompleto"].ToString();
+                Sesion.Iniciar(
+                    Convert.ToInt32(fila["ID_Usuario"]),
+                    fila["Username"].ToString(),
+                    Convert.ToInt32(fila["ID_Rol"]),
+                    fila["Rol"].ToString(),
+                    fila["NombreCompleto"].ToString()
+                );
 
                 // Redirigir según el rol
                 Form menu = CrearMenuPorRol(Sesion.IdRol);
@@ -104,16 +106,17 @@ namespace Proyecto_Catedra_UDB
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmRegistrarse frmRegistrarse = new frmRegistrarse();
-            frmRegistrarse.Show();
-            this.Hide();
-        }
-
+        //Mostrar u ocultar contraseña
         private void cbMostrarContra_CheckedChanged(object sender, EventArgs e)
         {
             txtContraseña.UseSystemPasswordChar = !cbMostrarContra.Checked;
+        }
+
+        private void btnRegistrate_Click(object sender, EventArgs e)
+        {
+            Hide();
+            using (var f = new frmRegistrarse()) f.ShowDialog();
+            Show();
         }
     }
 }
