@@ -20,6 +20,7 @@ namespace Proyecto_Catedra_UDB
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            Ui.AplicarTema(this);
             MostrarUsuario();
         }
 
