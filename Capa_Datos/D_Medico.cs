@@ -9,8 +9,11 @@ using Capa_Entidad;
 
 namespace Capa_Datos
 {
+    // Acceso a datos de los médicos.
     public class D_Medico
     {
+        // Lista los médicos ACTIVOS (usa la vista vw_MedicosActivos, que ya excluye a los inhabilitados).
+        // El filtro busca en el nombre completo, el usuario, el correo o la especialidad.
         public DataTable Listar(string filtro)
         {
             return Conexion.Tabla(
@@ -22,6 +25,9 @@ namespace Capa_Datos
                 new SqlParameter("@f", "%" + filtro + "%"));
         }
 
+        // Registra un médico nuevo con el procedimiento sp_RegistrarMedico, que crea la cuenta (tabla Usuario)
+        // y la ficha (tabla Medico) en una sola transacción: o se guardan las dos o no se guarda ninguna.
+        // "hash" es la contraseña ya convertida por la capa de negocio.
         public void Registrar(E_Medico m, string hash)
         {
             Conexion.Ejecutar("sp_RegistrarMedico", CommandType.StoredProcedure,
@@ -29,11 +35,12 @@ namespace Capa_Datos
                 new SqlParameter("@PasswordHash", hash),
                 new SqlParameter("@Nombre", m.Nombre),
                 new SqlParameter("@Apellido", m.Apellido),
-                new SqlParameter("@Telefono", Conexion.Nulo(m.Telefono)),
-                new SqlParameter("@Correo", Conexion.Nulo(m.Correo)),
+                new SqlParameter("@Telefono", Conexion.Nulo(m.Telefono)),   // opcional: vacío -> NULL
+                new SqlParameter("@Correo", Conexion.Nulo(m.Correo)),       // opcional: vacío -> NULL
                 new SqlParameter("@ID_Especialidad", m.IdEspecialidad));
         }
-
+        
+        // Modifica los datos personales y la especialidad. No toca el usuario ni la contraseña (eso va en la pantalla de Usuarios).
         public void Actualizar(E_Medico m)
         {
             Conexion.Ejecutar(
@@ -47,6 +54,9 @@ namespace Capa_Datos
                 new SqlParameter("@Esp", m.IdEspecialidad),
                 new SqlParameter("@Id", m.Id));
         }
+
+        // Médicos activos de una especialidad, con el nombre ya unido ("Nombre Apellido") para mostrarlo directo en un combo.
+        // Se usa al agendar una cita: primero eligen la especialidad y luego aparecen sus médicos.
         public DataTable PorEspecialidad(int idEspecialidad)
         {
             return Conexion.Tabla(
