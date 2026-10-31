@@ -1,5 +1,12 @@
-﻿using System.Drawing;
-using Proyecto_Catedra_UDB.Plantilla;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Proyecto_Catedra_UDB.FormsPaciente
 {
@@ -8,9 +15,6 @@ namespace Proyecto_Catedra_UDB.FormsPaciente
         public FrmInicioPaciente()
         {
             InitializeComponent();
-
-            btnInicio.BackColor = Color.SteelBlue;
-            btnInicio.ForeColor = Color.White;
         }
     }
 }

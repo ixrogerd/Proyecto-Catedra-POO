@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Entidad;
-using Proyecto_Catedra_UDB.Plantilla;
 
 namespace Proyecto_Catedra_UDB
 {
@@ -21,7 +20,6 @@ namespace Proyecto_Catedra_UDB
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            Ui.AplicarTema(this);
             MostrarUsuario();
         }
 

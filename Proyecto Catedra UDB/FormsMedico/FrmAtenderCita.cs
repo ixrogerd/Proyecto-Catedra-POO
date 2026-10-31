@@ -94,10 +94,5 @@ namespace Proyecto_Catedra_UDB
             txtObservaciones.Clear();
             txtDiagnostico.Focus();
         }
-
-        private void txtPaciente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

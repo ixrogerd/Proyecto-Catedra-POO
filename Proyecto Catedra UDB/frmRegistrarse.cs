@@ -16,7 +16,6 @@ namespace Proyecto_Catedra_UDB
             btnRegistrarse.Enabled = false;
             btnRegistrarse.BackColor = System.Drawing.Color.LightGray;
             pnlDatosPer.Visible = true;
-            Ui.AplicarTema(this);
             this.FormClosed += (s, e) => btnLogin_Click(s, e);
         }
         private readonly N_Paciente negocio = new N_Paciente();
@@ -106,7 +105,7 @@ namespace Proyecto_Catedra_UDB
             if (txtClave.Text.Length >= 6)
             {
                 btnRegistrarse.Enabled = true;
-                btnRegistrarse.BackColor = System.Drawing.Color.SteelBlue;
+                btnRegistrarse.BackColor = System.Drawing.Color.FromArgb(0, 122, 204);
             }
             else
             {
