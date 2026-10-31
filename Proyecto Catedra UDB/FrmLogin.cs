@@ -6,6 +6,7 @@ using Capa_Negocio;
 using Proyecto_Catedra_UDB.FormsAdmin;
 using Proyecto_Catedra_UDB.FormsMedico;
 using Proyecto_Catedra_UDB.FormsPaciente;
+using Proyecto_Catedra_UDB.Plantilla;
 namespace Proyecto_Catedra_UDB
 {
     public partial class FrmLogin : Form
@@ -17,6 +18,7 @@ namespace Proyecto_Catedra_UDB
             InitializeComponent();
             AcceptButton = btnIniciarSesion;          // Enter = iniciar sesión
             txtContraseña.UseSystemPasswordChar = true;
+            Ui.AplicarTema(this);
             
         }
 

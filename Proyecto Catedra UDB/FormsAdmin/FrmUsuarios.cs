@@ -174,6 +174,9 @@ namespace Proyecto_Catedra_UDB
             txtNuevaClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
         }
 
+        private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

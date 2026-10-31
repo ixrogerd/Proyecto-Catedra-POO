@@ -2,30 +2,18 @@
 {
     partial class FrmAgendarCita
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
+
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
@@ -42,215 +30,251 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMotivo = new System.Windows.Forms.TextBox();
             this.lblInfo = new System.Windows.Forms.Label();
+
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnAgendarCita
-            // 
-            this.btnAgendarCita.FlatAppearance.BorderSize = 0;
-            // 
-            // btnCitas
-            // 
-            this.btnCitas.FlatAppearance.BorderSize = 0;
-            // 
-            // btnDisponibilidad
-            // 
-            this.btnDisponibilidad.FlatAppearance.BorderSize = 0;
-            // 
-            // btnInicio
-            // 
-            this.btnInicio.BackColor = System.Drawing.Color.LightBlue;
-            this.btnInicio.FlatAppearance.BorderSize = 0;
-            this.btnInicio.ForeColor = System.Drawing.SystemColors.ControlText;
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+
             // 
             // lblTitulo
             // 
-            this.lblTitulo.Size = new System.Drawing.Size(289, 50);
-            this.lblTitulo.Text = "AGENDAR CITA";
+            this.lblTitulo.Size = new System.Drawing.Size(500, 50);
+            this.lblTitulo.Text = "AGENDAR CITA MÉDICA";
+
             // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Location = new System.Drawing.Point(636, 193);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(220, 22);
-            this.dtpFecha.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(632, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 21);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Fecha";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(272, 262);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 21);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Médico";
-            // 
-            // label2
+            // label2 - Especialidad
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(272, 157);
+            this.label2.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.label2.Location = new System.Drawing.Point(290, 155);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 21);
-            this.label2.TabIndex = 15;
+            this.label2.Size = new System.Drawing.Size(89, 19);
+            this.label2.TabIndex = 13;
             this.label2.Text = "Especialidad";
-            // 
-            // cbMedico
-            // 
-            this.cbMedico.FormattingEnabled = true;
-            this.cbMedico.Location = new System.Drawing.Point(275, 298);
-            this.cbMedico.Name = "cbMedico";
-            this.cbMedico.Size = new System.Drawing.Size(221, 21);
-            this.cbMedico.TabIndex = 14;
+
             // 
             // cbEspecialidad
             // 
+            this.cbEspecialidad.DropDownStyle =
+                System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEspecialidad.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbEspecialidad.FormattingEnabled = true;
-            this.cbEspecialidad.Location = new System.Drawing.Point(276, 197);
+            this.cbEspecialidad.Location = new System.Drawing.Point(294, 185);
             this.cbEspecialidad.Name = "cbEspecialidad";
-            this.cbEspecialidad.Size = new System.Drawing.Size(220, 21);
-            this.cbEspecialidad.TabIndex = 13;
+            this.cbEspecialidad.Size = new System.Drawing.Size(300, 25);
+            this.cbEspecialidad.TabIndex = 14;
+
             // 
-            // label3
+            // label4 - Médico
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.label4.Location = new System.Drawing.Point(290, 245);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 19);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Médico";
+
+            // 
+            // cbMedico
+            // 
+            this.cbMedico.DropDownStyle =
+                System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMedico.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbMedico.FormattingEnabled = true;
+            this.cbMedico.Location = new System.Drawing.Point(294, 275);
+            this.cbMedico.Name = "cbMedico";
+            this.cbMedico.Size = new System.Drawing.Size(300, 25);
+            this.cbMedico.TabIndex = 16;
+
+            // 
+            // label5 - Fecha
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.label5.Location = new System.Drawing.Point(660, 155);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 19);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Fecha";
+
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpFecha.Format =
+                System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFecha.CustomFormat = "dd/MM/yyyy";
+            this.dtpFecha.Location = new System.Drawing.Point(664, 185);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(300, 25);
+            this.dtpFecha.TabIndex = 18;
+
+            // 
+            // label3 - Hora
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(633, 262);
+            this.label3.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.label3.Location = new System.Drawing.Point(660, 245);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 21);
-            this.label3.TabIndex = 21;
+            this.label3.Size = new System.Drawing.Size(39, 19);
+            this.label3.TabIndex = 19;
             this.label3.Text = "Hora";
+
             // 
             // cbHora
             // 
+            this.cbHora.DropDownStyle =
+                System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHora.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbHora.FormattingEnabled = true;
-            this.cbHora.Location = new System.Drawing.Point(636, 298);
+            this.cbHora.Location = new System.Drawing.Point(664, 275);
             this.cbHora.Name = "cbHora";
-            this.cbHora.Size = new System.Drawing.Size(221, 21);
+            this.cbHora.Size = new System.Drawing.Size(300, 25);
             this.cbHora.TabIndex = 20;
+
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font(
+                "Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(180, 70, 50);
+            this.lblInfo.Location = new System.Drawing.Point(660, 315);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(0, 15);
+            this.lblInfo.TabIndex = 21;
+            this.lblInfo.Text = "";
+
+            // 
+            // label1 - Motivo
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.label1.Location = new System.Drawing.Point(290, 365);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 19);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Motivo (OPCIONAL)";
+
+            // 
+            // txtMotivo
+            // 
+            this.txtMotivo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtMotivo.Location = new System.Drawing.Point(294, 395);
+            this.txtMotivo.Multiline = true;
+            this.txtMotivo.Name = "txtMotivo";
+            this.txtMotivo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMotivo.Size = new System.Drawing.Size(670, 75);
+            this.txtMotivo.TabIndex = 23;
+
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.LightBlue;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiar.ForeColor = System.Drawing.Color.FromArgb(31, 41, 55);
+            this.btnLimpiar.Location = new System.Drawing.Point(294, 525);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(175, 45);
+            this.btnLimpiar.TabIndex = 24;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+
             // 
             // btnAgendar
             // 
             this.btnAgendar.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAgendar.FlatAppearance.BorderSize = 0;
-            this.btnAgendar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgendar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAgendar.Location = new System.Drawing.Point(404, 450);
+            this.btnAgendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgendar.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAgendar.ForeColor = System.Drawing.Color.White;
+            this.btnAgendar.Location = new System.Drawing.Point(535, 525);
             this.btnAgendar.Name = "btnAgendar";
-            this.btnAgendar.Size = new System.Drawing.Size(146, 48);
-            this.btnAgendar.TabIndex = 23;
+            this.btnAgendar.Size = new System.Drawing.Size(220, 45);
+            this.btnAgendar.TabIndex = 25;
             this.btnAgendar.Text = "AGENDAR CITA";
-            this.btnAgendar.UseVisualStyleBackColor = true;
+            this.btnAgendar.UseVisualStyleBackColor = false;
             this.btnAgendar.Click += new System.EventHandler(this.btnAgendar_Click);
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(276, 450);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 48);
-            this.btnLimpiar.TabIndex = 22;
-            this.btnLimpiar.Text = "LIMPIAR";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(745, 450);
+            this.btnCancelar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font(
+                "Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(55, 65, 81);
+            this.btnCancelar.Location = new System.Drawing.Point(794, 525);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 48);
-            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Size = new System.Drawing.Size(170, 45);
+            this.btnCancelar.TabIndex = 26;
             this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(272, 360);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 21);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Motivo (OPCIONAL)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtMotivo
-            // 
-            this.txtMotivo.Location = new System.Drawing.Point(279, 400);
-            this.txtMotivo.Multiline = true;
-            this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(217, 25);
-            this.txtMotivo.TabIndex = 26;
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(638, 357);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(38, 13);
-            this.lblInfo.TabIndex = 27;
-            this.lblInfo.Text = "label6";
+
             // 
             // FrmAgendarCita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 661);
-            this.Controls.Add(this.lblInfo);
-            this.Controls.Add(this.txtMotivo);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAgendar);
-            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbEspecialidad);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbMedico);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbHora);
-            this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbMedico);
-            this.Controls.Add(this.cbEspecialidad);
+            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtMotivo);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnAgendar);
+            this.Controls.Add(this.btnCancelar);
+
             this.Name = "FrmAgendarCita";
-            this.Text = "Agendar Cita";
-            this.Controls.SetChildIndex(this.cbEspecialidad, 0);
-            this.Controls.SetChildIndex(this.cbMedico, 0);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agendar cita médica";
+
             this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.cbEspecialidad, 0);
             this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.cbMedico, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.dtpFecha, 0);
-            this.Controls.SetChildIndex(this.cbHora, 0);
             this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.cbHora, 0);
+            this.Controls.SetChildIndex(this.lblInfo, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtMotivo, 0);
             this.Controls.SetChildIndex(this.btnLimpiar, 0);
             this.Controls.SetChildIndex(this.btnAgendar, 0);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.pnlMenu, 0);
             this.Controls.SetChildIndex(this.pnlSuperior, 0);
             this.Controls.SetChildIndex(this.lblTitulo, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.txtMotivo, 0);
-            this.Controls.SetChildIndex(this.lblInfo, 0);
+
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
