@@ -424,6 +424,7 @@
             this.Controls.Add(this.pnlDatosPer);
             this.Controls.Add(this.pnlUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "frmRegistrarse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmRegistrarse";

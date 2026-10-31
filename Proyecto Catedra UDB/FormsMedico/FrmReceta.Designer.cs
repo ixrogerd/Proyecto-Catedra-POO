@@ -37,7 +37,10 @@
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpPaciente = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboCita = new System.Windows.Forms.ComboBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.grpMedicamento = new System.Windows.Forms.GroupBox();
@@ -56,8 +59,6 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEmitir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboCita = new System.Windows.Forms.ComboBox();
             this.pnlMenu.SuspendLayout();
             this.grpPaciente.SuspendLayout();
             this.grpMedicamento.SuspendLayout();
@@ -107,6 +108,23 @@
             this.grpPaciente.TabIndex = 20;
             this.grpPaciente.TabStop = false;
             this.grpPaciente.Text = "DATOS DE LA CITA";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Cita:";
+            // 
+            // cboCita
+            // 
+            this.cboCita.FormattingEnabled = true;
+            this.cboCita.Location = new System.Drawing.Point(78, 32);
+            this.cboCita.Name = "cboCita";
+            this.cboCita.Size = new System.Drawing.Size(169, 23);
+            this.cboCita.TabIndex = 10;
             // 
             // lblFecha
             // 
@@ -259,6 +277,14 @@
             this.dgvMedicamentos.MultiSelect = false;
             this.dgvMedicamentos.Name = "dgvMedicamentos";
             this.dgvMedicamentos.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMedicamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMedicamentos.RowHeadersVisible = false;
             this.dgvMedicamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicamentos.Size = new System.Drawing.Size(790, 135);
@@ -306,23 +332,6 @@
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 15);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Cita:";
-            // 
-            // cboCita
-            // 
-            this.cboCita.FormattingEnabled = true;
-            this.cboCita.Location = new System.Drawing.Point(78, 32);
-            this.cboCita.Name = "cboCita";
-            this.cboCita.Size = new System.Drawing.Size(169, 23);
-            this.cboCita.TabIndex = 10;
             // 
             // FrmReceta
             // 
