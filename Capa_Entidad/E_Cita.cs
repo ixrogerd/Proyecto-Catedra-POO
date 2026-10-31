@@ -21,9 +21,10 @@ namespace Capa_Entidad
         public TimeSpan Hora { get; set; }
 
         // Por qué viene el paciente. Es opcional (puede ir vacío) y mide máximo 200 caracteres.
-        public string Motivo { get; set; }
+        public string Motivo { get; set; } 
 
-        // Quién pide la cita y con qué médico. Ojo: el ID del paciente y el del médico
+        // Quién pide la cita y con qué médico.
+        // el ID del paciente y el del médico
         // son el mismo ID de su cuenta de usuario, por eso salen de Sesion.IdUsuario cuando es quien está logueado.
         public int IdPaciente { get; set; }
         public int IdMedico { get; set; }

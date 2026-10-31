@@ -14,7 +14,7 @@ namespace Capa_Datos
     internal static class Conexion
     {
         // Crea una conexión nueva a la BD (todavía sin abrir).
-        // La cadena de conexión se lee del App.config con el nombre "sql". Ojo: se lee el App.config del proyecto
+        // La cadena de conexión se lee del App.config con el nombre "sql"; se lee el App.config del proyecto
         // que arranca el programa (el de los formularios), no uno de esta capa.
         public static SqlConnection Crear()
         {
