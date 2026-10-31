@@ -44,7 +44,7 @@ namespace Proyecto_Catedra_UDB
             Limpiar();
             Cargar();
         }
-        
+        // Carga los médicos en la tabla
         private void Cargar()
         {
             try
@@ -78,7 +78,7 @@ namespace Proyecto_Catedra_UDB
             btnHorarios.BackColor = Color.LightGray;
 
         }
-
+        // Lee los datos del formulario y los devuelve en un objeto E_Medico
         private E_Medico Leer()
         {
             return new E_Medico
@@ -94,7 +94,7 @@ namespace Proyecto_Catedra_UDB
                     ? 0 : Convert.ToInt32(cboEspecialidad.SelectedValue)
             };
         }
-
+        // Genera un nombre de usuario único basado en el nombre y apellido del médico
         private string GenerarUsuario()
         {
             string usuario = txtNombre.Text.Trim().ToLower().Split(' ')[0] + "." + txtApellido.Text.Trim().ToLower().Split(' ')[0] + "_" + new Random().Next(100,999);
@@ -103,7 +103,7 @@ namespace Proyecto_Catedra_UDB
                 contador++;
             return usuario + contador;
         }
-
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (idSeleccionado != 0)
@@ -167,6 +167,18 @@ namespace Proyecto_Catedra_UDB
             Cargar();
         }
 
+        // Abre el formulario de horarios del médico seleccionado
+        private void btnHorarios_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == 0)
+            {
+                Ui.Aviso("Seleccione un médico de la tabla.");
+                return;
+            }
+            new FrmHorariosMedico(idSeleccionado, nombreSeleccionado).Show();
+            this.Hide();
+        }
+        // Llena los campos del formulario con los datos del médico seleccionado en la tabla
         private void dgvMedicos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -184,17 +196,17 @@ namespace Proyecto_Catedra_UDB
             btnHorarios.Enabled = true;
             btnHorarios.BackColor = Color.Gray;
         }
-
+        // Filtra la tabla de médicos según el texto ingresado en el cuadro de búsqueda
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             Cargar();
         }
-
+        // Muestra u oculta la contraseña según el estado del checkbox
         private void cbMostrarClave_CheckedChanged(object sender, EventArgs e)
         {
             txtClave.UseSystemPasswordChar = !cbMostrarClave.Checked;
         }
-
+        // Actualizan el nombre de usuario automáticamente cuando se cambian el nombre o apellido
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
             txtUsuario.Text = GenerarUsuario();
@@ -205,15 +217,5 @@ namespace Proyecto_Catedra_UDB
             txtUsuario.Text = GenerarUsuario();
         }
 
-        private void btnHorarios_Click(object sender, EventArgs e)
-        {
-            if (idSeleccionado == 0)
-            {
-                Ui.Aviso("Seleccione un médico de la tabla.");
-                return;
-            }
-            new FrmHorariosMedico(idSeleccionado, nombreSeleccionado).Show();
-            this.Hide();
-        }
     }
 }
