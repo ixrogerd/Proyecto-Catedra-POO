@@ -29,12 +29,7 @@
         private void InitializeComponent()
         {
             this.grpDatos = new System.Windows.Forms.GroupBox();
-            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
             this.mtxTelefono = new System.Windows.Forms.MaskedTextBox();
-            this.txtClave = new System.Windows.Forms.TextBox();
-            this.Clave = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -44,6 +39,11 @@
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.cbMostrarClave = new System.Windows.Forms.CheckBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.Clave = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
@@ -112,18 +112,6 @@
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "DATOS DEL PACIENTE";
             // 
-            // cbMostrarClave
-            // 
-            this.cbMostrarClave.AutoSize = true;
-            this.cbMostrarClave.ForeColor = System.Drawing.Color.Black;
-            this.cbMostrarClave.Location = new System.Drawing.Point(18, 143);
-            this.cbMostrarClave.Name = "cbMostrarClave";
-            this.cbMostrarClave.Size = new System.Drawing.Size(135, 19);
-            this.cbMostrarClave.TabIndex = 31;
-            this.cbMostrarClave.Text = "Mostrar Contraseña";
-            this.cbMostrarClave.UseVisualStyleBackColor = true;
-            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
-            // 
             // mtxTelefono
             // 
             this.mtxTelefono.Location = new System.Drawing.Point(247, 110);
@@ -131,40 +119,6 @@
             this.mtxTelefono.Name = "mtxTelefono";
             this.mtxTelefono.Size = new System.Drawing.Size(190, 23);
             this.mtxTelefono.TabIndex = 22;
-            // 
-            // txtClave
-            // 
-            this.txtClave.Location = new System.Drawing.Point(18, 109);
-            this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(231, 23);
-            this.txtClave.TabIndex = 16;
-            // 
-            // Clave
-            // 
-            this.Clave.AutoSize = true;
-            this.Clave.ForeColor = System.Drawing.Color.Black;
-            this.Clave.Location = new System.Drawing.Point(14, 85);
-            this.Clave.Name = "Clave";
-            this.Clave.Size = new System.Drawing.Size(69, 15);
-            this.Clave.TabIndex = 15;
-            this.Clave.Text = "Contraseña";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Location = new System.Drawing.Point(18, 45);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(231, 23);
-            this.txtUsuario.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(14, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Usuario";
             // 
             // lblFecha
             // 
@@ -248,6 +202,52 @@
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre";
             // 
+            // cbMostrarClave
+            // 
+            this.cbMostrarClave.AutoSize = true;
+            this.cbMostrarClave.ForeColor = System.Drawing.Color.Black;
+            this.cbMostrarClave.Location = new System.Drawing.Point(18, 143);
+            this.cbMostrarClave.Name = "cbMostrarClave";
+            this.cbMostrarClave.Size = new System.Drawing.Size(135, 19);
+            this.cbMostrarClave.TabIndex = 31;
+            this.cbMostrarClave.Text = "Mostrar Contraseña";
+            this.cbMostrarClave.UseVisualStyleBackColor = true;
+            this.cbMostrarClave.CheckedChanged += new System.EventHandler(this.cbMostrarClave_CheckedChanged);
+            // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(18, 109);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(231, 23);
+            this.txtClave.TabIndex = 16;
+            // 
+            // Clave
+            // 
+            this.Clave.AutoSize = true;
+            this.Clave.ForeColor = System.Drawing.Color.Black;
+            this.Clave.Location = new System.Drawing.Point(14, 85);
+            this.Clave.Name = "Clave";
+            this.Clave.Size = new System.Drawing.Size(69, 15);
+            this.Clave.TabIndex = 15;
+            this.Clave.Text = "Contraseña";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(18, 45);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(231, 23);
+            this.txtUsuario.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Usuario";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -294,11 +294,11 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.Color.LightGray;
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminar.Location = new System.Drawing.Point(607, 347);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(160, 38);
