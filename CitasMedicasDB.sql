@@ -196,6 +196,11 @@ BEGIN
 
         INSERT INTO Medico (ID_Medico, Nombre, Apellido, Telefono, Correo, ID_Especialidad)
         VALUES (@Id, @Nombre, @Apellido, @Telefono, @Correo, @ID_Especialidad);
+
+        INSERT INTO HorarioDisponible (ID_Medico, DiaSemana, HoraInicio, HoraFin)
+        SELECT @Id, d.Dia, t.Ini, t.Fin
+        FROM (VALUES (1),(2),(3),(4),(5)) d(Dia)
+        CROSS JOIN (VALUES ('08:00','12:00'),('13:00','17:00')) t(Ini, Fin);
     COMMIT;
     SELECT @Id AS ID_Medico;
 END
@@ -340,11 +345,6 @@ EXEC sp_RegistrarPaciente @Username='paciente2', @PasswordHash=@hPac,
      @Nombre=N'Luis', @Apellido=N'Ramírez', @FechaNacimiento='1995-11-02',
      @Telefono='7000-0004', @Correo='luis.ramirez@correo.com';
 
--- Horario de los medicos: lunes a viernes, 8:00 a 12:00
-INSERT INTO HorarioDisponible (ID_Medico, DiaSemana, HoraInicio, HoraFin)
-SELECT m.ID_Medico, d.Dia, '08:00', '12:00'
-FROM Medico m
-CROSS JOIN (VALUES (1),(2),(3),(4),(5)) d(Dia);
 
 -- Citas de ejemplo para el proximo lunes
 DECLARE @hoy    DATE = CAST(GETDATE() AS DATE);
