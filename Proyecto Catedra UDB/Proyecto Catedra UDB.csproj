@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormsAdmin\FrmHorariosMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsAdmin\FrmHorariosMedico.Designer.cs">
+      <DependentUpon>FrmHorariosMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsAdmin\FrmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <Compile Include="Plantilla\Ui.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormsAdmin\FrmHorariosMedico.resx">
+      <DependentUpon>FrmHorariosMedico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsAdmin\FrmInicioAdmin.resx">
       <DependentUpon>FrmInicioAdmin.cs</DependentUpon>
     </EmbeddedResource>

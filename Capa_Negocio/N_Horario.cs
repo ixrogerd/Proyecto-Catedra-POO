@@ -12,16 +12,18 @@ namespace Capa_Negocio
     {
         D_Horario datos = new D_Horario();
 
-        public DataTable Listar(int idMedico) { return datos.Listar(idMedico); }
+        public DataTable Listar(int idMedico, int dia) { return datos.Listar(idMedico, dia); }
 
         public void Registrar(E_Horario h)
         {
+            SoloAdmin();
             ValidarHorario(h);
             datos.Insertar(h);
         }
 
         public void Actualizar(E_Horario h)
         {
+            SoloAdmin();
             if (h.Id <= 0) throw new Exception("Seleccione un horario.");
             ValidarHorario(h);
             if (datos.CitasPendientesFuera(h.Id, h.IdMedico, h.Dia, h.HoraInicio, h.HoraFin) > 0)
@@ -31,6 +33,7 @@ namespace Capa_Negocio
 
         public void Eliminar(int id, int idMedico)
         {
+            SoloAdmin();
             if (id <= 0) throw new Exception("Seleccione un horario.");
             if (datos.CitasPendientesFuera(id, idMedico, 0, TimeSpan.Zero, TimeSpan.Zero) > 0)
                 throw new Exception("Hay citas pendientes en ese horario. Cancélelas primero.");
@@ -47,6 +50,11 @@ namespace Capa_Negocio
                                     " minutos (por ejemplo 08:00 o 08:30).");
             if (datos.HayTraslape(h.IdMedico, h.Dia, h.HoraInicio, h.HoraFin, h.Id))
                 throw new Exception("Ese horario se traslapa con otro que ya tiene ese día.");
+        }
+        private static void SoloAdmin()
+        {
+            if (Sesion.IdRol != Sesion.Administrador)
+                throw new Exception("Solo la administración puede modificar horarios.");
         }
     }
 }

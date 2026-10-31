@@ -1,5 +1,6 @@
 ﻿using Capa_Entidad;
 using Capa_Negocio;
+using Proyecto_Catedra_UDB.FormsAdmin;
 using Proyecto_Catedra_UDB.Plantilla;
 using System;
 using System.Drawing;
@@ -10,6 +11,8 @@ namespace Proyecto_Catedra_UDB
     {
         private readonly N_Medico negocio = new N_Medico();
         private int idSeleccionado = 0;
+        private string nombreSeleccionado = "";
+
         public FrmRegistrarMedico()
         {
             InitializeComponent();
@@ -70,6 +73,10 @@ namespace Proyecto_Catedra_UDB
             cboEspecialidad.SelectedIndex = -1;
             dgvMedicos.ClearSelection();
             txtNombre.Focus();
+            nombreSeleccionado = "";
+            btnHorarios.Enabled = false;
+            btnHorarios.BackColor = Color.LightGray;
+
         }
 
         private E_Medico Leer()
@@ -173,6 +180,9 @@ namespace Proyecto_Catedra_UDB
             cboEspecialidad.SelectedValue = Convert.ToInt32(f.Cells["ID_Especialidad"].Value);
             txtClave.Clear();
             txtUsuario.Enabled = txtClave.Enabled = false;
+            nombreSeleccionado = f.Cells["Nombre"].Value + " " + f.Cells["Apellido"].Value;
+            btnHorarios.Enabled = true;
+            btnHorarios.BackColor = Color.Gray;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -193,6 +203,17 @@ namespace Proyecto_Catedra_UDB
         private void txtApellido_TextChanged(object sender, EventArgs e)
         {
             txtUsuario.Text = GenerarUsuario();
+        }
+
+        private void btnHorarios_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == 0)
+            {
+                Ui.Aviso("Seleccione un médico de la tabla.");
+                return;
+            }
+            new FrmHorariosMedico(idSeleccionado, nombreSeleccionado).Show();
+            this.Hide();
         }
     }
 }

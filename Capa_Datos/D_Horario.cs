@@ -16,16 +16,17 @@ namespace Capa_Datos
         // Horarios de un médico, ordenados por día y hora.
         // El CASE convierte el número del día (1 a 7) en su nombre para mostrarlo en la tabla,
         // pero también devolvemos el número (DiaSemana) porque lo necesitamos al editar.
-        public DataTable Listar(int idMedico)
+        public DataTable Listar(int idMedico, int dia)
         {
             return Conexion.Tabla(
                 "SELECT ID_Horario, DiaSemana, " +
                 "CASE DiaSemana WHEN 1 THEN N'Lunes' WHEN 2 THEN N'Martes' WHEN 3 THEN N'Miércoles' " +
                 "WHEN 4 THEN N'Jueves' WHEN 5 THEN N'Viernes' WHEN 6 THEN N'Sábado' ELSE N'Domingo' END AS Dia, " +
                 "HoraInicio, HoraFin " +
-                "FROM HorarioDisponible WHERE ID_Medico = @M ORDER BY DiaSemana, HoraInicio",
+                "FROM HorarioDisponible WHERE ID_Medico = @M AND (DiaSemana = @d OR @d = 0) ORDER BY DiaSemana, HoraInicio",
                 CommandType.Text,
-                new SqlParameter("@M", idMedico));
+                new SqlParameter("@M", idMedico),
+                new SqlParameter("@d", dia));
         }
 
         // Crea un horario nuevo (el ID lo genera la BD).

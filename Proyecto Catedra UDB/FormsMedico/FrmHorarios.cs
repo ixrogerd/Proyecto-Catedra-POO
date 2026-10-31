@@ -12,7 +12,7 @@ namespace Proyecto_Catedra_UDB
     {
         private readonly N_Horario negocio = new N_Horario();
         private int idSeleccionado = 0;
-
+        private bool seleccionProgramatica = false; // Variable para evitar que el evento SelectedIndexChanged se dispare al cargar el combo
         public FrmHorarios()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Proyecto_Catedra_UDB
         private static void ConfigurarHora(DateTimePicker dtp)
         {
             dtp.Format = DateTimePickerFormat.Custom;
-            dtp.CustomFormat = "hh:mm tt";
+            dtp.CustomFormat = "HH:mm";
             dtp.ShowUpDown = true;
         }
 
@@ -32,7 +32,7 @@ namespace Proyecto_Catedra_UDB
         {
             try
             {
-                dgvHorarios.DataSource = negocio.Listar(Sesion.IdUsuario);
+                dgvHorarios.DataSource = negocio.Listar(Sesion.IdUsuario, cmbDia.SelectedIndex + 1);
                 dgvHorarios.Columns["ID_Horario"].Visible = false;
                 dgvHorarios.Columns["DiaSemana"].Visible = false;
                 dgvHorarios.Columns["Dia"].HeaderText = "Día";
@@ -48,21 +48,10 @@ namespace Proyecto_Catedra_UDB
         private void Limpiar()
         {
             idSeleccionado = 0;
-            cmbDia.SelectedIndex = 0;
+            cmbDia.SelectedIndex = -1;
             dtpHoraInicio.Value = DateTime.Today.AddHours(8);
             dtpHoraFin.Value = DateTime.Today.AddHours(17);
             dgvHorarios.ClearSelection();
-        }
-        private E_Horario Leer()
-        {
-            return new E_Horario
-            {
-                Id = idSeleccionado,
-                IdMedico = Sesion.IdUsuario,
-                Dia = cmbDia.SelectedIndex + 1,   // Lunes = 1 ... Domingo = 7
-                HoraInicio = new TimeSpan(dtpHoraInicio.Value.Hour, dtpHoraInicio.Value.Minute, 0),
-                HoraFin = new TimeSpan(dtpHoraFin.Value.Hour, dtpHoraFin.Value.Minute, 0)
-            };
         }
         private void FrmHorarios_Load(object sender, EventArgs e)
         {
@@ -77,123 +66,31 @@ namespace Proyecto_Catedra_UDB
 
         }
 
-        private void btnAgregarHorario_Click(object sender, EventArgs e)
-        {
-            if (cmbDia.SelectedIndex == -1)
-            {
-                MessageBox.Show(
-                    "Seleccione un día.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            if (dtpHoraFin.Value.TimeOfDay <=
-                dtpHoraInicio.Value.TimeOfDay)
-            {
-                MessageBox.Show(
-                    "La hora de finalización debe ser mayor que la hora de inicio.",
-                    "Horario incorrecto",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            // Evitar agregar el mismo día dos veces
-            foreach (DataGridViewRow fila in dgvHorarios.Rows)
-            {
-                if (fila.Cells["Dia"].Value != null &&
-                    fila.Cells["Dia"].Value.ToString() ==
-                    cmbDia.Text)
-                {
-                    MessageBox.Show(
-                        "Ya existe un horario para " + cmbDia.Text + ".",
-                        "Horario existente",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
-                    return;
-                }
-            }
-
-            dgvHorarios.Rows.Add(
-                cmbDia.Text,
-                dtpHoraInicio.Value.ToString("hh:mm tt"),
-                dtpHoraFin.Value.ToString("hh:mm tt"));
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (idSeleccionado == 0)
-            {
-                Ui.Aviso("Seleccione un horario de la tabla.");
-                return;
-            }
-            DialogResult r = MessageBox.Show("¿Eliminar este horario?",
-                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (r != DialogResult.Yes) return;
-
-            try
-            {
-                negocio.Eliminar(idSeleccionado, Sesion.IdUsuario);
-                Ui.Info("Horario eliminado.");
-                Limpiar();
-                Cargar();
-            }
-            catch (Exception ex) { Ui.Aviso(ex.Message); }
-        }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
 
         }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (idSeleccionado != 0)
-            {
-                Ui.Aviso("Hay un horario seleccionado. Use EDITAR, o LIMPIAR para registrar otro.");
-                return;
-            }
-            try
-            {
-                negocio.Registrar(Leer());
-                Ui.Info("Horario guardado correctamente.");
-                Limpiar();
-                Cargar();
-            }
-            catch (Exception ex) { Ui.Aviso(ex.Message); }
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (idSeleccionado == 0)
-            {
-                Ui.Aviso("Seleccione un horario de la tabla.");
-                return;
-            }
-            try
-            {
-                negocio.Actualizar(Leer());
-                Ui.Info("Horario actualizado correctamente.");
-                Limpiar();
-                Cargar();
-            }
-            catch (Exception ex) { Ui.Aviso(ex.Message); }
-        }
-
         private void dgvHorarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
             DataGridViewRow f = dgvHorarios.Rows[e.RowIndex];
+
             idSeleccionado = Convert.ToInt32(f.Cells["ID_Horario"].Value);
-            cmbDia.SelectedIndex = Convert.ToInt32(f.Cells["DiaSemana"].Value) - 1;
+
+            // Activamos el seguro para que cambiar el combo no dispare Cargar()
+            seleccionProgramatica = true;
+            cmbDia.SelectedIndex = Convert.ToInt32(f.Cells["DiaSemana"].Value) -1;
+            seleccionProgramatica = false;
+
             dtpHoraInicio.Value = DateTime.Today.Add((TimeSpan)f.Cells["HoraInicio"].Value);
             dtpHoraFin.Value = DateTime.Today.Add((TimeSpan)f.Cells["HoraFin"].Value);
+        }
+
+        private void cmbDia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (seleccionProgramatica) return; // Si el cambio viene del código, no recarga
+            Cargar();
         }
     }
 }
