@@ -249,7 +249,7 @@
             this.btnInhabilitar.FlatAppearance.BorderSize = 0;
             this.btnInhabilitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInhabilitar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnInhabilitar.Location = new System.Drawing.Point(440, 575);
+            this.btnInhabilitar.Location = new System.Drawing.Point(442, 575);
             this.btnInhabilitar.Name = "btnInhabilitar";
             this.btnInhabilitar.Size = new System.Drawing.Size(160, 38);
             this.btnInhabilitar.TabIndex = 23;
